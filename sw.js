@@ -6,6 +6,7 @@ const ASSETS = [
   './buffets.html',
   './tips.html',
   './map.html',
+  './off-strip.html',
   './style.css',
   './leaflet.js',
   './leaflet.css',

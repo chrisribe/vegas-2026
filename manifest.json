@@ -1,0 +1,14 @@
+{
+  "name": "Les Schtroumpfs – Vegas 2026",
+  "short_name": "Vegas 2026",
+  "description": "Las Vegas guide for les schtroumpfs pool team – cheap eats, buffets, tips & map",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#0d0d1a",
+  "theme_color": "#f0c040",
+  "orientation": "portrait-primary",
+  "icons": [
+    { "src": "icons/icon-192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "icons/icon-512.png", "sizes": "512x512", "type": "image/png" }
+  ]
+}

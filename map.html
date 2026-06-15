@@ -5,7 +5,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>🗺️ Map – Vegas 2026</title>
   <link rel="stylesheet" href="style.css" />
-  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  <link rel="manifest" href="manifest.json" />
+  <meta name="theme-color" content="#f0c040" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <link rel="apple-touch-icon" href="icons/icon-192.png" />
+  <link rel="stylesheet" href="leaflet.css" />
   <style>
     #map { height: 520px; border-radius: 12px; border: 2px solid var(--gold); }
     @media (max-width: 640px) { #map { height: 380px; } }
@@ -64,6 +69,11 @@
     <h2>🗺️ Vegas Map — All Spots Pinned</h2>
     <p style="color:var(--text-muted); margin-bottom:16px;">Tap any pin for details. Your home base is SAHARA Hotel (⭐ star pin, north strip).</p>
 
+    <!-- OFFLINE TIP -->
+    <div style="background:rgba(40,167,69,0.1); border:1px solid #28a745; border-radius:10px; padding:12px 16px; margin-bottom:16px; font-size:0.88rem; color:#28a745;">
+      📶 <strong>Works offline!</strong> Browse this page once on WiFi at the hotel — all pages and map tiles you've viewed get saved to your phone automatically. No data needed after that!
+    </div>
+
     <!-- LEGEND -->
     <div class="legend">
       <div class="legend-item"><div class="legend-dot" style="background:#f0c040;"></div> Our Hotels</div>
@@ -115,7 +125,7 @@
     <p><small>Info sourced from YouTube research playlist. Prices may vary — always verify on-site.</small></p>
   </footer>
 
-  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script src="leaflet.js"></script>
   <script>
     // ── Map init centred roughly on mid-Strip ──
     const map = L.map('map').setView([36.1147, -115.172], 14);
@@ -319,6 +329,12 @@
       Closest essentials store to your hotel<br/>
       Load up the mini fridge here!
     `);
+  </script>
+
+  <script>
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => navigator.serviceWorker.register('./sw.js'));
+    }
   </script>
 </body>
 </html>

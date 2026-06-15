@@ -1,267 +1,261 @@
-1|<!DOCTYPE html>
-2|<html lang="en">
-3|<head>
-4|  <meta charset="UTF-8" />
-5|  <link rel="manifest" href="manifest.json" />
-6|  <meta name="theme-color" content="#f0c040" />
-7|  <meta name="apple-mobile-web-app-capable" content="yes" />
-8|  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-9|  <title>🏙️ Off-Strip – Vegas 2026</title>
-10|  <link rel="stylesheet" href="style.css" />
-11|</head>
-12|<body>
-13|  <header>
-14|    <div class="header-inner">
-15|      <div class="header-title">
-16|        <span class="emoji-big">🎱</span>
-17|        <div>
-18|          <h1>Les Schtroumpfs à Vegas!</h1>
-19|          <p class="subtitle">CPA League Champions — Las Vegas · Aug 9–16, 2026</p>
-20|        </div>
-21|      </div>
-22|      <div class="translate-bar">
-23|        <a href="https://translate.google.com/translate?hl=fr&sl=en&tl=fr&u=https%3A%2F%2Fchrisribe.github.io%2Fvegas-2026%2Foff-strip.html"
-24|           target="_blank" class="translate-btn">🌐 Traduire en Français</a>
-25|      </div>
-26|    </div>
-27|    <nav>
-28|      <a href="index.html">🏠 Home</a>
-29|      <a href="cheap-eats.html">🍽️ Cheap Eats</a>
-30|      <a href="buffets.html">🦞 Buffets</a>
-31|      <a href="off-strip.html" class="active">🏙️ Off-Strip</a>
-32|      <a href="tips.html">💡 Tips</a>
-33|      <a href="map.html">🗺️ Map</a>
-34|    </nav>
-35|  </header>
-36|
-37|  <section>
-38|    <span class="section-label">Beyond the casinos</span>
-39|    <h2>🏙️ Off-Strip — Where Locals Actually Eat</h2>
-40|    <p style="color:var(--text-muted); margin-bottom:16px;">The Strip has a "Strip Tax" — everything costs more the closer you are to it. These neighborhoods are where Vegas locals and industry workers actually go. 40–60% cheaper, way more authentic.</p>
-41|
-42|    <div style="background:rgba(40,167,69,0.08); border:1px solid #28a745; border-radius:10px; padding:12px 16px; margin-bottom:32px; font-size:0.88rem;">
-43|      🚕 <strong style="color:#28a745">Getting there:</strong> All these spots are 10–15 min by Uber/Lyft ($8–14 one-way). Free parking everywhere off-strip. Worth every penny of the ride!
-44|    </div>
-45|
-46|    <!-- ARTS DISTRICT -->
-47|    <div style="background:var(--card-bg); border:2px solid var(--gold); border-radius:12px; padding:28px; margin-bottom:28px;">
-48|      <div style="display:flex; align-items:center; gap:12px; margin-bottom:8px; flex-wrap:wrap;">
-49|        <div style="font-size:2rem;">🎨</div>
-50|        <div>
-51|          <h3 style="color:var(--gold); font-size:1.4rem;">Arts District (18b)</h3>
-52|          <p style="color:var(--text-muted); font-size:0.85rem;">~3 miles from SAHARA · 10–15 min · Uber ~$10–14</p>
-53|        </div>
-54|        <div style="margin-left:auto; background:rgba(40,167,69,0.15); border:1px solid #28a745; color:#28a745; border-radius:8px; padding:6px 14px; font-weight:700; font-size:0.82rem; white-space:nowrap;">🏆 Team Favourite Pick</div>
-55|      </div>
-56|      <p style="color:var(--text-muted); margin-bottom:16px; font-size:0.9rem;">18 blocks of murals, galleries, vintage shops, and some of the best independent restaurants in Vegas. Completely different vibe from the Strip — feels like a real city neighbourhood.</p>
-57|
-58|      <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(180px,1fr)); gap:10px; margin-bottom:20px;">
-59|        <div style="background:rgba(40,167,69,0.1); border:1px solid #28a745; border-radius:8px; padding:12px; font-size:0.85rem;">
-60|          <strong style="color:#28a745; display:block; margin-bottom:4px;">🚕 Uber/Lyft</strong>
-61|          <span style="color:var(--text-muted);">~$10–14 one-way · 10–15 min · Recommended — easiest option</span>
-62|        </div>
-63|        <div style="background:rgba(255,152,0,0.1); border:1px solid #ff9800; border-radius:8px; padding:12px; font-size:0.85rem;">
-64|          <strong style="color:#ff9800; display:block; margin-bottom:4px;">🚗 Self-Drive</strong>
-65|          <span style="color:var(--text-muted);">Free street parking on Main St &amp; side streets. SAHARA has free parking — drive out from there</span>
-66|        </div>
-67|        <div style="background:rgba(79,195,247,0.1); border:1px solid #4fc3f7; border-radius:8px; padding:12px; font-size:0.85rem;">
-68|          <strong style="color:#4fc3f7; display:block; margin-bottom:4px;">🚌 No direct bus</strong>
-69|          <span style="color:var(--text-muted);">No convenient bus from SAHARA. Uber is the way to go for this one</span>
-70|        </div>
-71|      </div>
-72|
-73|      <h4 style="color:var(--gold); margin-bottom:12px;">🍽️ Best Restaurants</h4>
-74|      <div class="table-wrap">
-75|        <table>
-76|          <thead><tr><th>Restaurant</th><th>Cuisine</th><th>Price/Person</th><th>Must Try</th></tr></thead>
-77|          <tbody>
-78|            <tr><td><strong><a href="https://www.google.com/search?q=SoulBelly+BBQ+Las+Vegas+Arts+District" target="_blank" rel="noopener" style="color:var(--gold); text-decoration:underline dotted; text-underline-offset:3px;">🥩 SoulBelly BBQ</a></strong><br/><small>1327 S Main St</small></td><td>Texas BBQ</td><td class="price">$15–25</td><td>Counter-service honky-tonk with live music stage. Brisket, ribs, huge patio. Exactly what BBQ should be 🎸</td></tr>
-79|            <tr><td><strong><a href="https://www.google.com/search?q=Good+Pie+Las+Vegas+Arts+District+pizza" target="_blank" rel="noopener" style="color:var(--gold); text-decoration:underline dotted; text-underline-offset:3px;">🍕 Good Pie</a></strong><br/><small>1212 S Main St</small></td><td>Pizza (NY/Detroit/Sicilian)</td><td class="price">$15–25</td><td>3-day fermented dough. NY, Sicilian, Detroit &amp; Grandma-style. Full bar. Quality that beats anything on the Strip</td></tr>
-80|            <tr><td><strong><a href="https://www.google.com/search?q=Letty's+Cocina+Las+Vegas+Arts+District+Mexican" target="_blank" rel="noopener" style="color:var(--gold); text-decoration:underline dotted; text-underline-offset:3px;">🌮 Letty's Cocina</a></strong><br/><small>807 S Main St</small></td><td>Modern Mexican</td><td class="price">$12–20</td><td>Award-winning quesatacos and quesabirria pizza. Creative takes on Mexican street food</td></tr>
-81|            <tr><td><strong><a href="https://www.google.com/search?q=Jammyland+Las+Vegas+Arts+District+Jamaican" target="_blank" rel="noopener" style="color:var(--gold); text-decoration:underline dotted; text-underline-offset:3px;">🇯🇲 Jammyland</a></strong></td><td>Jamaican / Caribbean</td><td class="price">$12–20</td><td>Jerk chicken, cocktails, reggae vibes. Big patio — great for the whole team!</td></tr>
-82|            <tr><td><strong><a href="https://www.google.com/search?q=Esther's+Kitchen+Las+Vegas+Arts+District+Italian" target="_blank" rel="noopener" style="color:var(--gold); text-decoration:underline dotted; text-underline-offset:3px;">🍝 Esther's Kitchen</a></strong><br/><small>1131 S Main St</small></td><td>Italian</td><td class="price">$25–40</td><td>💰 Splurge pick. Housemade cacio e pepe, wood-fired pizza, truffle sausage. One of Vegas' best restaurants period</td></tr>
-83|            <tr><td><strong><a href="https://www.google.com/search?q=1228+Main+Las+Vegas+Arts+District+restaurant" target="_blank" rel="noopener" style="color:var(--gold); text-decoration:underline dotted; text-underline-offset:3px;">🥐 1228 Main (Wolfgang Puck)</a></strong></td><td>Breakfast/Lunch</td><td class="price">$15–25</td><td>Wagyu smashburger, shakshuka, French toast. Breakfast &amp; lunch only</td></tr>
-84|            <tr><td><strong><a href="https://www.google.com/search?q=Cream+Me+Ice+Creamery+Las+Vegas+Arts+District" target="_blank" rel="noopener" style="color:var(--gold); text-decoration:underline dotted; text-underline-offset:3px;">🍦 Cream Me Ice Creamery</a></strong></td><td>Dessert</td><td class="price">$6–10</td><td>Mangonada and specialty ice cream. Perfect after dinner</td></tr>
-85|          </tbody>
-86|        </table>
-87|      </div>
-88|
-89|      <h4 style="color:var(--gold); margin:20px 0 12px;">🎨 Things to Do (Mostly Free!)</h4>
-90|      <div class="highlight-grid">
-91|        <div class="highlight-item">
-92|          <span class="hi">🖼️</span>
-93|          <strong><a href="https://www.google.com/search?q=Las+Vegas+Arts+District+murals+18b" target="_blank" rel="noopener" style="color:var(--gold); text-decoration:underline dotted; text-underline-offset:3px;">Graffiti Mural Walk</a></strong>
-94|          <p>Multi-block rotating outdoor murals. Best at golden hour. Completely free — just walk and explore</p>
-95|        </div>
-96|        <div class="highlight-item">
-97|          <span class="hi">🛍️</span>
-98|          <strong><a href="https://www.google.com/search?q=Antique+Alley+Las+Vegas+Arts+District" target="_blank" rel="noopener" style="color:var(--gold); text-decoration:underline dotted; text-underline-offset:3px;">Antique Alley</a></strong>
-99|          <p>20+ vintage and antique shops. Casino castoffs, retro Vegas gear, vintage clothing. Free to browse</p>
-100|        </div>
-101|        <div class="highlight-item">
-102|          <span class="hi">🎭</span>
-103|          <strong><a href="https://www.google.com/search?q=First+Friday+Las+Vegas+Arts+District" target="_blank" rel="noopener" style="color:var(--gold); text-decoration:underline dotted; text-underline-offset:3px;">First Friday (MONTHLY FREE EVENT)</a></strong>
-104|          <p>First Friday of every month — ~15,000 people. Live music, art, food vendors, street performers. <strong style="color:var(--gold)">Aug 7th is right before you arrive — close!</strong></p>
-105|        </div>
-106|        <div class="highlight-item">
-107|          <span class="hi">🎪</span>
-108|          <strong><a href="https://www.google.com/search?q=Big+Rig+Jig+Las+Vegas+Arts+District" target="_blank" rel="noopener" style="color:var(--gold); text-decoration:underline dotted; text-underline-offset:3px;">Big Rig Jig</a></strong>
-109|          <p>Two 40-ft decommissioned tanker trucks sculpted together. Originally from Burning Man. Free to see</p>
-110|        </div>
-111|        <div class="highlight-item">
-112|          <span class="hi">🍺</span>
-113|          <strong>Bar Hop</strong>
-114|          <p>Velveteen Rabbit → Nevada Brew Works → ReBar → Audio Bar (EDM dancing). All walkable on Main St</p>
-115|        </div>
-116|        <div class="highlight-item">
-117|          <span class="hi">🌀</span>
-118|          <strong><a href="https://www.google.com/search?q=Area+15+Meow+Wolf+Las+Vegas" target="_blank" rel="noopener" style="color:var(--gold); text-decoration:underline dotted; text-underline-offset:3px;">Meow Wolf / Area 15</a></strong>
-119|          <p>Nearby immersive art experience — surreal supermarket portal. ~$48/person. Worth it for the group!</p>
-120|        </div>
-121|      </div>
-122|    </div>
-123|
-124|    <!-- CHINATOWN -->
-125|    <div style="background:var(--card-bg); border:1px solid #444; border-radius:12px; padding:28px; margin-bottom:28px;">
-126|      <div style="display:flex; align-items:center; gap:12px; margin-bottom:8px; flex-wrap:wrap;">
-127|        <div style="font-size:2rem;">🍜</div>
-128|        <div>
-129|          <h3 style="color:var(--gold); font-size:1.4rem;">Chinatown (Spring Mountain Rd)</h3>
-130|          <p style="color:var(--text-muted); font-size:0.85rem;">~3–5 miles from SAHARA · 10–15 min · Uber ~$8–12</p>
-131|        </div>
-132|        <div style="margin-left:auto; background:rgba(240,192,64,0.15); border:1px solid var(--gold); color:var(--gold); border-radius:8px; padding:6px 14px; font-weight:700; font-size:0.82rem; white-space:nowrap;">💰 40–60% Cheaper Than Strip</div>
-133|      </div>
-134|      <p style="color:var(--text-muted); margin-bottom:16px; font-size:0.9rem;">America's best-kept food secret. 248+ restaurants along Spring Mountain Road — Chinese, Korean BBQ, Vietnamese, Japanese, Thai. No tourist markup, no resort fees, just great food at real prices. This is where Vegas chefs eat on their nights off.</p>
-135|
-136|      <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(180px,1fr)); gap:10px; margin-bottom:20px;">
-137|        <div style="background:rgba(40,167,69,0.1); border:1px solid #28a745; border-radius:8px; padding:12px; font-size:0.85rem;">
-138|          <strong style="color:#28a745; display:block; margin-bottom:4px;">🚕 Uber/Lyft</strong>
-139|          <span style="color:var(--text-muted);">~$8–12 one-way · 10–15 min · Best option. Free parking in strip mall lots everywhere if driving</span>
-140|        </div>
-141|        <div style="background:rgba(255,152,0,0.1); border:1px solid #ff9800; border-radius:8px; padding:12px; font-size:0.85rem;">
-142|          <strong style="color:#ff9800; display:block; margin-bottom:4px;">🚗 Self-Drive</strong>
-143|          <span style="color:var(--text-muted);">Free parking in every strip mall lot. Park once, walk between restaurants. Very easy</span>
-144|        </div>
-145|        <div style="background:rgba(79,195,247,0.1); border:1px solid #4fc3f7; border-radius:8px; padding:12px; font-size:0.85rem;">
-146|          <strong style="color:#4fc3f7; display:block; margin-bottom:4px;">🚌 No direct bus</strong>
-147|          <span style="color:var(--text-muted);">No convenient transit from SAHARA. Ride-share or drive only</span>
-148|        </div>
-149|      </div>
-150|
-151|      <h4 style="color:var(--gold); margin-bottom:12px;">🍽️ Best Restaurants</h4>
-152|      <div class="table-wrap">
-153|        <table>
-154|          <thead><tr><th>Restaurant</th><th>Cuisine</th><th>Price/Person</th><th>Must Try</th></tr></thead>
-155|          <tbody>
-156|            <tr><td><strong><a href="https://www.google.com/search?q=China+Mama+Las+Vegas+Chinatown+noodles" target="_blank" rel="noopener" style="color:var(--gold); text-decoration:underline dotted; text-underline-offset:3px;">🍜 China Mama</a></strong><br/><small>3420 S Jones Blvd</small></td><td>Chinese (handmade noodles)</td><td class="price">$12–18</td><td>Noodles cut live in open kitchen! Pan-fried dumplings $10, cumin lamb $16. Hard to spend over $18/person. Cash preferred</td></tr>
-157|            <tr><td><strong><a href="https://www.google.com/search?q=Monta+Ramen+Las+Vegas+Spring+Mountain" target="_blank" rel="noopener" style="color:var(--gold); text-decoration:underline dotted; text-underline-offset:3px;">🍜 Monta Ramen</a></strong><br/><small>5030 Spring Mountain Rd</small></td><td>Japanese Ramen</td><td class="price">$14–16</td><td>Tonkotsu broth simmered 18+ hrs. Creamy, rich, incredible. Expect 20–30 min wait — worth it</td></tr>
-158|            <tr><td><strong><a href="https://www.google.com/search?q=District+One+Vietnamese+Las+Vegas" target="_blank" rel="noopener" style="color:var(--gold); text-decoration:underline dotted; text-underline-offset:3px;">🍲 District One</a></strong><br/><small>3400 S Jones Blvd</small></td><td>Vietnamese</td><td class="price">$12–22</td><td>Pho with 12-hr bone broth, broken rice with pork chop $14. Open until 2 AM — great after a late night!</td></tr>
-159|            <tr><td><strong><a href="https://www.google.com/search?q=Chengdu+Taste+Las+Vegas+Sichuan" target="_blank" rel="noopener" style="color:var(--gold); text-decoration:underline dotted; text-underline-offset:3px;">🌶️ Chengdu Taste</a></strong><br/><small>3950 Schiff Dr</small></td><td>Sichuan Chinese</td><td class="price">$15–25</td><td>Boiled fish in chili oil — arrives in a literal basin of red oil 🔥 Dan dan noodles $13. VERY spicy — be warned!</td></tr>
-160|            <tr><td><strong><a href="https://www.google.com/search?q=Gen+Korean+BBQ+Las+Vegas+all+you+can+eat" target="_blank" rel="noopener" style="color:var(--gold); text-decoration:underline dotted; text-underline-offset:3px;">🥩 Gen Korean BBQ</a></strong><br/><small>4480 Paradise Rd</small></td><td>Korean BBQ (All-You-Can-Eat)</td><td class="price">$22 lunch · $28–30 dinner</td><td>Best KBBQ deal in Vegas — lunch AYCE $22! Use Yelp waitlist before arriving</td></tr>
-161|            <tr><td><strong><a href="https://www.google.com/search?q=Hong+Kong+Garden+dim+sum+Las+Vegas" target="_blank" rel="noopener" style="color:var(--gold); text-decoration:underline dotted; text-underline-offset:3px;">🍱 Hong Kong Garden</a></strong><br/><small>3407 S Jones Blvd</small></td><td>Dim Sum</td><td class="price">$20–35</td><td>Cart service on weekends. Har gow $5, siu mai $5, BBQ pork buns $4.50. Arrive before 11am weekends</td></tr>
-162|            <tr><td><strong><a href="https://www.google.com/search?q=Lotus+of+Siam+Las+Vegas+Thai+restaurant" target="_blank" rel="noopener" style="color:var(--gold); text-decoration:underline dotted; text-underline-offset:3px;">🍛 Lotus of Siam</a></strong><br/><small>620 E Flamingo Rd</small></td><td>Northern Thai 🏆</td><td class="price">$20–35</td><td>James Beard Award winner. Called "best Thai in America" by NYT &amp; Gourmet Magazine. Khao soi $22. Reserve ahead!</td></tr>
-163|            <tr><td><strong><a href="https://www.google.com/search?q=SweetHoney+Dessert+Las+Vegas+Chinatown" target="_blank" rel="noopener" style="color:var(--gold); text-decoration:underline dotted; text-underline-offset:3px;">🧊 SweetHoney Dessert</a></strong></td><td>Taiwanese Desserts</td><td class="price">Under $10</td><td>Shaved ice and bubble waffles. Perfect dessert stop after dinner</td></tr>
-164|          </tbody>
-165|        </table>
-166|      </div>
-167|
-168|      <div style="background:rgba(240,192,64,0.08); border-left:4px solid var(--gold); border-radius:0 8px 8px 0; padding:14px 16px; margin-top:16px; font-size:0.88rem; color:var(--text-muted);">
-169|        💡 <strong style="color:var(--text);">Pro tip:</strong> Many Chinatown restaurants are open until midnight–3am. Weera Thai and Hwaro Korean BBQ run until 3am on weekends — perfect for after pool matches!
-170|      </div>
-171|    </div>
-172|
-173|    <!-- FREMONT EAST -->
-174|    <div style="background:var(--card-bg); border:1px solid #444; border-radius:12px; padding:28px; margin-bottom:28px;">
-175|      <div style="display:flex; align-items:center; gap:12px; margin-bottom:8px; flex-wrap:wrap;">
-176|        <div style="font-size:2rem;">🍺</div>
-177|        <div>
-178|          <h3 style="color:var(--gold); font-size:1.4rem;">Fremont East District</h3>
-179|          <p style="color:var(--text-muted); font-size:0.85rem;">~2.2 miles from SAHARA · 8–15 min · Uber ~$8–12 · Closest off-strip area!</p>
-180|        </div>
-181|      </div>
-182|      <p style="color:var(--text-muted); margin-bottom:16px; font-size:0.9rem;">East of the Fremont Street Experience — this is where the locally-owned bars and restaurants are. Historic, gritty, real Vegas. The Deuce bus goes here from the Strip for $6.</p>
-183|
-184|      <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(180px,1fr)); gap:10px; margin-bottom:20px;">
-185|        <div style="background:rgba(40,167,69,0.1); border:1px solid #28a745; border-radius:8px; padding:12px; font-size:0.85rem;">
-186|          <strong style="color:#28a745; display:block; margin-bottom:4px;">🚕 Uber/Lyft</strong>
-187|          <span style="color:var(--text-muted);">~$8–12 one-way · 8–15 min · Closest off-strip area to SAHARA!</span>
-188|        </div>
-189|        <div style="background:rgba(79,195,247,0.1); border:1px solid #4fc3f7; border-radius:8px; padding:12px; font-size:0.85rem;">
-190|          <strong style="color:#4fc3f7; display:block; margin-bottom:4px;">🚌 Deuce Bus — $6/day</strong>
-191|          <span style="color:var(--text-muted);">Catch it on the Strip (southbound from SAHARA area) to Downtown. Unlimited rides all day</span>
-192|        </div>
-193|        <div style="background:rgba(255,152,0,0.1); border:1px solid #ff9800; border-radius:8px; padding:12px; font-size:0.85rem;">
-194|          <strong style="color:#ff9800; display:block; margin-bottom:4px;">🚗 Self-Drive</strong>
-195|          <span style="color:var(--text-muted);">Metered street parking + cheap public lots. ~$4–8 to park for the evening</span>
-196|        </div>
-197|        <div style="background:rgba(240,192,64,0.1); border:1px solid var(--gold); border-radius:8px; padding:12px; font-size:0.85rem;">
-198|          <strong style="color:var(--gold); display:block; margin-bottom:4px;">🆓 Free Shuttle (daytime)</strong>
-199|          <span style="color:var(--text-muted);">Downtown Loop shuttle is FREE — runs through downtown &amp; to the Strat, near SAHARA</span>
-200|        </div>
-201|      </div>
-202|
-203|      <div class="table-wrap">
-204|        <table>
-205|          <thead><tr><th>Venue</th><th>Type</th><th>Price</th><th>Why Go</th></tr></thead>
-206|          <tbody>
-207|            <tr><td><strong><a href="https://www.google.com/search?q=Evel+Pie+Las+Vegas+downtown+pizza" target="_blank" rel="noopener" style="color:var(--gold); text-decoration:underline dotted; text-underline-offset:3px;">🍕 Evel Pie</a></strong><br/><small>508 E Fremont St</small></td><td>Pizza + Bar</td><td class="price">$8 slice+beer ✅</td><td>Evel Knievel themed, irreverent, great pizza. Verified $8 combo still holds. Open until 4am Fri–Sat!</td></tr>
-208|            <tr><td><strong><a href="https://www.google.com/search?q=Le+Thai+Las+Vegas+Fremont+East" target="_blank" rel="noopener" style="color:var(--gold); text-decoration:underline dotted; text-underline-offset:3px;">🍜 Le Thai</a></strong></td><td>Thai</td><td class="price">$12–20</td><td>A catalyst for the whole Fremont East revival. Short rib fried rice, pad thai. Full bar</td></tr>
-209|            <tr><td><strong><a href="https://www.google.com/search?q=Atomic+Liquors+Las+Vegas+oldest+bar" target="_blank" rel="noopener" style="color:var(--gold); text-decoration:underline dotted; text-underline-offset:3px;">🍺 Atomic Liquors</a></strong><br/><small>917 E Fremont St</small></td><td>Historic Bar</td><td class="price">Drinks only</td><td>Las Vegas' <strong>OLDEST freestanding bar</strong> — est. 1952, liquor license #00001. Where Sinatra, Dean Martin drank. A must-visit piece of Vegas history!</td></tr>
-210|            <tr><td><strong><a href="https://www.google.com/search?q=Downtown+Container+Park+Las+Vegas" target="_blank" rel="noopener" style="color:var(--gold); text-decoration:underline dotted; text-underline-offset:3px;">📦 Container Park</a></strong></td><td>Free Attraction</td><td class="price">FREE to enter</td><td>Shopping, dining, live music — all inside repurposed shipping containers. Anchored by a fire-breathing praying mantis (from Burning Man). Kids love it!</td></tr>
-211|            <tr><td><strong><a href="https://www.google.com/search?q=Neon+Museum+Las+Vegas" target="_blank" rel="noopener" style="color:var(--gold); text-decoration:underline dotted; text-underline-offset:3px;">🏛️ Neon Museum</a></strong></td><td>Museum</td><td class="price">~$20–25/adult</td><td>200+ vintage casino neon signs. Night tours are incredible — book in advance. Uniquely Vegas!</td></tr>
-212|            <tr><td><strong><a href="https://www.google.com/search?q=Binion's+million+dollar+display+Las+Vegas" target="_blank" rel="noopener" style="color:var(--gold); text-decoration:underline dotted; text-underline-offset:3px;">💵 Binion's $1M Display</a></strong></td><td>Free Attraction</td><td class="price">FREE</td><td>Stand behind $1 million in cash and get a free photo. Open 24/7. Classic Vegas!</td></tr>
-213|            <tr><td><strong><a href="https://www.google.com/search?q=SlotZilla+zip+line+Fremont+Street+Las+Vegas" target="_blank" rel="noopener" style="color:var(--gold); text-decoration:underline dotted; text-underline-offset:3px;">🎰 SlotZilla Zip Line</a></strong></td><td>Activity</td><td class="price">$30–65</td><td>Two zip line levels soaring over the Fremont Street LED canopy. Insane fun for the team!</td></tr>
-214|          </tbody>
-215|        </table>
-216|      </div>
-217|    </div>
-218|
-219|    <!-- SUMMARY -->
-220|    <div style="background:rgba(240,192,64,0.08); border:2px solid var(--gold); border-radius:12px; padding:24px;">
-221|      <h3 style="color:var(--gold); margin-bottom:16px;">🗓️ Suggested Team Day Trips</h3>
-222|      <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap:16px;">
-223|        <div style="background:var(--card-bg); border-radius:10px; padding:16px;">
-224|          <strong style="color:var(--gold); display:block; margin-bottom:8px;">🎨 Arts District Day</strong>
-225|          <ul style="color:var(--text-muted); list-style:none; font-size:0.88rem; display:grid; gap:4px;">
-226|            <li>☀️ Afternoon: Mural walk + Antique Alley (FREE)</li>
-227|            <li>🍖 Dinner: SoulBelly BBQ + beers ($20–25/pp)</li>
-228|            <li>🍺 Night: Bar hop Main St</li>
-229|            <li>💰 Total est: $30–40/person</li>
-230|          </ul>
-231|        </div>
-232|        <div style="background:var(--card-bg); border-radius:10px; padding:16px;">
-233|          <strong style="color:var(--gold); display:block; margin-bottom:8px;">🍜 Chinatown Food Crawl</strong>
-234|          <ul style="color:var(--text-muted); list-style:none; font-size:0.88rem; display:grid; gap:4px;">
-235|            <li>🕐 Lunch: Gen Korean BBQ AYCE ($22)</li>
-236|            <li>🍜 Snack: Monta Ramen ($15)</li>
-237|            <li>🧊 Dessert: SweetHoney shaved ice ($8)</li>
-238|            <li>💰 Total est: $30–40/person</li>
-239|          </ul>
-240|        </div>
-241|        <div style="background:var(--card-bg); border-radius:10px; padding:16px;">
-242|          <strong style="color:var(--gold); display:block; margin-bottom:8px;">🍺 Fremont Night Out</strong>
-243|          <ul style="color:var(--text-muted); list-style:none; font-size:0.88rem; display:grid; gap:4px;">
-244|            <li>🌭 Pre-drinks: Stage Door ($3 dog+beer)</li>
-245|            <li>🎶 Fremont St Experience (FREE show)</li>
-246|            <li>🍕 Late: Evel Pie slice+beer ($8)</li>
-247|            <li>🍺 Finish: Atomic Liquors (historic!)</li>
-248|            <li>💰 Total est: $20–30/person</li>
-249|          </ul>
-250|        </div>
-251|      </div>
-252|    </div>
-253|  </section>
-254|
-255|  <footer>
-256|    <p>🎱 Les Schtroumpfs – CPA League Champions 2026 | Las Vegas, Aug 9–16</p>
-257|    <p><small>Info sourced from YouTube research + verified against Yelp, TripAdvisor, and official sources June 2026. Prices may vary.</small></p>
-258|  </footer>
-259|
-260|  <script>
-261|    if ('serviceWorker' in navigator) {
-262|      window.addEventListener('load', () => navigator.serviceWorker.register('./sw.js', { updateViaCache: 'none' }));
-263|    }
-264|  </script>
-265|</body>
-266|</html>
-267|
+1|1|<!DOCTYPE html>
+2|2|<html lang="en">
+3|3|<head>
+4|4|  <meta charset="UTF-8" />
+5|5|  <link rel="manifest" href="manifest.json" />
+6|6|  <meta name="theme-color" content="#f0c040" />
+7|7|  <meta name="apple-mobile-web-app-capable" content="yes" />
+8|8|  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+9|9|  <title>🏙️ Off-Strip – Vegas 2026</title>
+10|10|  <link rel="stylesheet" href="style.css" />
+11|11|</head>
+12|12|<body>
+13|13|  <header>
+14|14|    <div class="header-inner">
+15|15|      <div class="header-title">
+16|16|        <span class="emoji-big">🎱</span>
+17|17|        <div>
+18|18|          <h1>Les Schtroumpfs à Vegas!</h1>
+19|19|          <p class="subtitle">CPA League Champions — Las Vegas · Aug 9–16, 2026</p>
+20|20|        </div>
+21|21|      </div>
+22|22|      <div class="translate-bar">
+23|23|        <a href="https://translate.google.com/translate?hl=fr&sl=en&tl=fr&u=https%3A%2F%2Fchrisribe.github.io%2Fvegas-2026%2Foff-strip.html"
+24|24|           target="_blank" class="translate-btn">🌐 Traduire en Français</a>
+25|25|      </div>
+26|26|    </div>
+27|27|        <nav id="main-nav"></nav>
+    <script src="nav.js"></script>
+35|35|  </header>
+36|36|
+37|37|  <section>
+38|38|    <span class="section-label">Beyond the casinos</span>
+39|39|    <h2>🏙️ Off-Strip — Where Locals Actually Eat</h2>
+40|40|    <p style="color:var(--text-muted); margin-bottom:16px;">The Strip has a "Strip Tax" — everything costs more the closer you are to it. These neighborhoods are where Vegas locals and industry workers actually go. 40–60% cheaper, way more authentic.</p>
+41|41|
+42|42|    <div style="background:rgba(40,167,69,0.08); border:1px solid #28a745; border-radius:10px; padding:12px 16px; margin-bottom:32px; font-size:0.88rem;">
+43|43|      🚕 <strong style="color:#28a745">Getting there:</strong> All these spots are 10–15 min by Uber/Lyft ($8–14 one-way). Free parking everywhere off-strip. Worth every penny of the ride!
+44|44|    </div>
+45|45|
+46|46|    <!-- ARTS DISTRICT -->
+47|47|    <div style="background:var(--card-bg); border:2px solid var(--gold); border-radius:12px; padding:28px; margin-bottom:28px;">
+48|48|      <div style="display:flex; align-items:center; gap:12px; margin-bottom:8px; flex-wrap:wrap;">
+49|49|        <div style="font-size:2rem;">🎨</div>
+50|50|        <div>
+51|51|          <h3 style="color:var(--gold); font-size:1.4rem;">Arts District (18b)</h3>
+52|52|          <p style="color:var(--text-muted); font-size:0.85rem;">~3 miles from SAHARA · 10–15 min · Uber ~$10–14</p>
+53|53|        </div>
+54|54|        <div style="margin-left:auto; background:rgba(40,167,69,0.15); border:1px solid #28a745; color:#28a745; border-radius:8px; padding:6px 14px; font-weight:700; font-size:0.82rem; white-space:nowrap;">🏆 Team Favourite Pick</div>
+55|55|      </div>
+56|56|      <p style="color:var(--text-muted); margin-bottom:16px; font-size:0.9rem;">18 blocks of murals, galleries, vintage shops, and some of the best independent restaurants in Vegas. Completely different vibe from the Strip — feels like a real city neighbourhood.</p>
+57|57|
+58|58|      <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(180px,1fr)); gap:10px; margin-bottom:20px;">
+59|59|        <div style="background:rgba(40,167,69,0.1); border:1px solid #28a745; border-radius:8px; padding:12px; font-size:0.85rem;">
+60|60|          <strong style="color:#28a745; display:block; margin-bottom:4px;">🚕 Uber/Lyft</strong>
+61|61|          <span style="color:var(--text-muted);">~$10–14 one-way · 10–15 min · Recommended — easiest option</span>
+62|62|        </div>
+63|63|        <div style="background:rgba(255,152,0,0.1); border:1px solid #ff9800; border-radius:8px; padding:12px; font-size:0.85rem;">
+64|64|          <strong style="color:#ff9800; display:block; margin-bottom:4px;">🚗 Self-Drive</strong>
+65|65|          <span style="color:var(--text-muted);">Free street parking on Main St &amp; side streets. SAHARA has free parking — drive out from there</span>
+66|66|        </div>
+67|67|        <div style="background:rgba(79,195,247,0.1); border:1px solid #4fc3f7; border-radius:8px; padding:12px; font-size:0.85rem;">
+68|68|          <strong style="color:#4fc3f7; display:block; margin-bottom:4px;">🚌 No direct bus</strong>
+69|69|          <span style="color:var(--text-muted);">No convenient bus from SAHARA. Uber is the way to go for this one</span>
+70|70|        </div>
+71|71|      </div>
+72|72|
+73|73|      <h4 style="color:var(--gold); margin-bottom:12px;">🍽️ Best Restaurants</h4>
+74|74|      <div class="table-wrap">
+75|75|        <table>
+76|76|          <thead><tr><th>Restaurant</th><th>Cuisine</th><th>Price/Person</th><th>Must Try</th></tr></thead>
+77|77|          <tbody>
+78|78|            <tr><td><strong><a href="https://www.google.com/search?q=SoulBelly+BBQ+Las+Vegas+Arts+District" target="_blank" rel="noopener" style="color:var(--gold); text-decoration:underline dotted; text-underline-offset:3px;">🥩 SoulBelly BBQ</a></strong><br/><small>1327 S Main St</small></td><td>Texas BBQ</td><td class="price">$15–25</td><td>Counter-service honky-tonk with live music stage. Brisket, ribs, huge patio. Exactly what BBQ should be 🎸</td></tr>
+79|79|            <tr><td><strong><a href="https://www.google.com/search?q=Good+Pie+Las+Vegas+Arts+District+pizza" target="_blank" rel="noopener" style="color:var(--gold); text-decoration:underline dotted; text-underline-offset:3px;">🍕 Good Pie</a></strong><br/><small>1212 S Main St</small></td><td>Pizza (NY/Detroit/Sicilian)</td><td class="price">$15–25</td><td>3-day fermented dough. NY, Sicilian, Detroit &amp; Grandma-style. Full bar. Quality that beats anything on the Strip</td></tr>
+80|80|            <tr><td><strong><a href="https://www.google.com/search?q=Letty's+Cocina+Las+Vegas+Arts+District+Mexican" target="_blank" rel="noopener" style="color:var(--gold); text-decoration:underline dotted; text-underline-offset:3px;">🌮 Letty's Cocina</a></strong><br/><small>807 S Main St</small></td><td>Modern Mexican</td><td class="price">$12–20</td><td>Award-winning quesatacos and quesabirria pizza. Creative takes on Mexican street food</td></tr>
+81|81|            <tr><td><strong><a href="https://www.google.com/search?q=Jammyland+Las+Vegas+Arts+District+Jamaican" target="_blank" rel="noopener" style="color:var(--gold); text-decoration:underline dotted; text-underline-offset:3px;">🇯🇲 Jammyland</a></strong></td><td>Jamaican / Caribbean</td><td class="price">$12–20</td><td>Jerk chicken, cocktails, reggae vibes. Big patio — great for the whole team!</td></tr>
+82|82|            <tr><td><strong><a href="https://www.google.com/search?q=Esther's+Kitchen+Las+Vegas+Arts+District+Italian" target="_blank" rel="noopener" style="color:var(--gold); text-decoration:underline dotted; text-underline-offset:3px;">🍝 Esther's Kitchen</a></strong><br/><small>1131 S Main St</small></td><td>Italian</td><td class="price">$25–40</td><td>💰 Splurge pick. Housemade cacio e pepe, wood-fired pizza, truffle sausage. One of Vegas' best restaurants period</td></tr>
+83|83|            <tr><td><strong><a href="https://www.google.com/search?q=1228+Main+Las+Vegas+Arts+District+restaurant" target="_blank" rel="noopener" style="color:var(--gold); text-decoration:underline dotted; text-underline-offset:3px;">🥐 1228 Main (Wolfgang Puck)</a></strong></td><td>Breakfast/Lunch</td><td class="price">$15–25</td><td>Wagyu smashburger, shakshuka, French toast. Breakfast &amp; lunch only</td></tr>
+84|84|            <tr><td><strong><a href="https://www.google.com/search?q=Cream+Me+Ice+Creamery+Las+Vegas+Arts+District" target="_blank" rel="noopener" style="color:var(--gold); text-decoration:underline dotted; text-underline-offset:3px;">🍦 Cream Me Ice Creamery</a></strong></td><td>Dessert</td><td class="price">$6–10</td><td>Mangonada and specialty ice cream. Perfect after dinner</td></tr>
+85|85|          </tbody>
+86|86|        </table>
+87|87|      </div>
+88|88|
+89|89|      <h4 style="color:var(--gold); margin:20px 0 12px;">🎨 Things to Do (Mostly Free!)</h4>
+90|90|      <div class="highlight-grid">
+91|91|        <div class="highlight-item">
+92|92|          <span class="hi">🖼️</span>
+93|93|          <strong><a href="https://www.google.com/search?q=Las+Vegas+Arts+District+murals+18b" target="_blank" rel="noopener" style="color:var(--gold); text-decoration:underline dotted; text-underline-offset:3px;">Graffiti Mural Walk</a></strong>
+94|94|          <p>Multi-block rotating outdoor murals. Best at golden hour. Completely free — just walk and explore</p>
+95|95|        </div>
+96|96|        <div class="highlight-item">
+97|97|          <span class="hi">🛍️</span>
+98|98|          <strong><a href="https://www.google.com/search?q=Antique+Alley+Las+Vegas+Arts+District" target="_blank" rel="noopener" style="color:var(--gold); text-decoration:underline dotted; text-underline-offset:3px;">Antique Alley</a></strong>
+99|99|          <p>20+ vintage and antique shops. Casino castoffs, retro Vegas gear, vintage clothing. Free to browse</p>
+100|100|        </div>
+101|101|        <div class="highlight-item">
+102|102|          <span class="hi">🎭</span>
+103|103|          <strong><a href="https://www.google.com/search?q=First+Friday+Las+Vegas+Arts+District" target="_blank" rel="noopener" style="color:var(--gold); text-decoration:underline dotted; text-underline-offset:3px;">First Friday (MONTHLY FREE EVENT)</a></strong>
+104|104|          <p>First Friday of every month — ~15,000 people. Live music, art, food vendors, street performers. <strong style="color:var(--gold)">Aug 7th is right before you arrive — close!</strong></p>
+105|105|        </div>
+106|106|        <div class="highlight-item">
+107|107|          <span class="hi">🎪</span>
+108|108|          <strong><a href="https://www.google.com/search?q=Big+Rig+Jig+Las+Vegas+Arts+District" target="_blank" rel="noopener" style="color:var(--gold); text-decoration:underline dotted; text-underline-offset:3px;">Big Rig Jig</a></strong>
+109|109|          <p>Two 40-ft decommissioned tanker trucks sculpted together. Originally from Burning Man. Free to see</p>
+110|110|        </div>
+111|111|        <div class="highlight-item">
+112|112|          <span class="hi">🍺</span>
+113|113|          <strong>Bar Hop</strong>
+114|114|          <p>Velveteen Rabbit → Nevada Brew Works → ReBar → Audio Bar (EDM dancing). All walkable on Main St</p>
+115|115|        </div>
+116|116|        <div class="highlight-item">
+117|117|          <span class="hi">🌀</span>
+118|118|          <strong><a href="https://www.google.com/search?q=Area+15+Meow+Wolf+Las+Vegas" target="_blank" rel="noopener" style="color:var(--gold); text-decoration:underline dotted; text-underline-offset:3px;">Meow Wolf / Area 15</a></strong>
+119|119|          <p>Nearby immersive art experience — surreal supermarket portal. ~$48/person. Worth it for the group!</p>
+120|120|        </div>
+121|121|      </div>
+122|122|    </div>
+123|123|
+124|124|    <!-- CHINATOWN -->
+125|125|    <div style="background:var(--card-bg); border:1px solid #444; border-radius:12px; padding:28px; margin-bottom:28px;">
+126|126|      <div style="display:flex; align-items:center; gap:12px; margin-bottom:8px; flex-wrap:wrap;">
+127|127|        <div style="font-size:2rem;">🍜</div>
+128|128|        <div>
+129|129|          <h3 style="color:var(--gold); font-size:1.4rem;">Chinatown (Spring Mountain Rd)</h3>
+130|130|          <p style="color:var(--text-muted); font-size:0.85rem;">~3–5 miles from SAHARA · 10–15 min · Uber ~$8–12</p>
+131|131|        </div>
+132|132|        <div style="margin-left:auto; background:rgba(240,192,64,0.15); border:1px solid var(--gold); color:var(--gold); border-radius:8px; padding:6px 14px; font-weight:700; font-size:0.82rem; white-space:nowrap;">💰 40–60% Cheaper Than Strip</div>
+133|133|      </div>
+134|134|      <p style="color:var(--text-muted); margin-bottom:16px; font-size:0.9rem;">America's best-kept food secret. 248+ restaurants along Spring Mountain Road — Chinese, Korean BBQ, Vietnamese, Japanese, Thai. No tourist markup, no resort fees, just great food at real prices. This is where Vegas chefs eat on their nights off.</p>
+135|135|
+136|136|      <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(180px,1fr)); gap:10px; margin-bottom:20px;">
+137|137|        <div style="background:rgba(40,167,69,0.1); border:1px solid #28a745; border-radius:8px; padding:12px; font-size:0.85rem;">
+138|138|          <strong style="color:#28a745; display:block; margin-bottom:4px;">🚕 Uber/Lyft</strong>
+139|139|          <span style="color:var(--text-muted);">~$8–12 one-way · 10–15 min · Best option. Free parking in strip mall lots everywhere if driving</span>
+140|140|        </div>
+141|141|        <div style="background:rgba(255,152,0,0.1); border:1px solid #ff9800; border-radius:8px; padding:12px; font-size:0.85rem;">
+142|142|          <strong style="color:#ff9800; display:block; margin-bottom:4px;">🚗 Self-Drive</strong>
+143|143|          <span style="color:var(--text-muted);">Free parking in every strip mall lot. Park once, walk between restaurants. Very easy</span>
+144|144|        </div>
+145|145|        <div style="background:rgba(79,195,247,0.1); border:1px solid #4fc3f7; border-radius:8px; padding:12px; font-size:0.85rem;">
+146|146|          <strong style="color:#4fc3f7; display:block; margin-bottom:4px;">🚌 No direct bus</strong>
+147|147|          <span style="color:var(--text-muted);">No convenient transit from SAHARA. Ride-share or drive only</span>
+148|148|        </div>
+149|149|      </div>
+150|150|
+151|151|      <h4 style="color:var(--gold); margin-bottom:12px;">🍽️ Best Restaurants</h4>
+152|152|      <div class="table-wrap">
+153|153|        <table>
+154|154|          <thead><tr><th>Restaurant</th><th>Cuisine</th><th>Price/Person</th><th>Must Try</th></tr></thead>
+155|155|          <tbody>
+156|156|            <tr><td><strong><a href="https://www.google.com/search?q=China+Mama+Las+Vegas+Chinatown+noodles" target="_blank" rel="noopener" style="color:var(--gold); text-decoration:underline dotted; text-underline-offset:3px;">🍜 China Mama</a></strong><br/><small>3420 S Jones Blvd</small></td><td>Chinese (handmade noodles)</td><td class="price">$12–18</td><td>Noodles cut live in open kitchen! Pan-fried dumplings $10, cumin lamb $16. Hard to spend over $18/person. Cash preferred</td></tr>
+157|157|            <tr><td><strong><a href="https://www.google.com/search?q=Monta+Ramen+Las+Vegas+Spring+Mountain" target="_blank" rel="noopener" style="color:var(--gold); text-decoration:underline dotted; text-underline-offset:3px;">🍜 Monta Ramen</a></strong><br/><small>5030 Spring Mountain Rd</small></td><td>Japanese Ramen</td><td class="price">$14–16</td><td>Tonkotsu broth simmered 18+ hrs. Creamy, rich, incredible. Expect 20–30 min wait — worth it</td></tr>
+158|158|            <tr><td><strong><a href="https://www.google.com/search?q=District+One+Vietnamese+Las+Vegas" target="_blank" rel="noopener" style="color:var(--gold); text-decoration:underline dotted; text-underline-offset:3px;">🍲 District One</a></strong><br/><small>3400 S Jones Blvd</small></td><td>Vietnamese</td><td class="price">$12–22</td><td>Pho with 12-hr bone broth, broken rice with pork chop $14. Open until 2 AM — great after a late night!</td></tr>
+159|159|            <tr><td><strong><a href="https://www.google.com/search?q=Chengdu+Taste+Las+Vegas+Sichuan" target="_blank" rel="noopener" style="color:var(--gold); text-decoration:underline dotted; text-underline-offset:3px;">🌶️ Chengdu Taste</a></strong><br/><small>3950 Schiff Dr</small></td><td>Sichuan Chinese</td><td class="price">$15–25</td><td>Boiled fish in chili oil — arrives in a literal basin of red oil 🔥 Dan dan noodles $13. VERY spicy — be warned!</td></tr>
+160|160|            <tr><td><strong><a href="https://www.google.com/search?q=Gen+Korean+BBQ+Las+Vegas+all+you+can+eat" target="_blank" rel="noopener" style="color:var(--gold); text-decoration:underline dotted; text-underline-offset:3px;">🥩 Gen Korean BBQ</a></strong><br/><small>4480 Paradise Rd</small></td><td>Korean BBQ (All-You-Can-Eat)</td><td class="price">$22 lunch · $28–30 dinner</td><td>Best KBBQ deal in Vegas — lunch AYCE $22! Use Yelp waitlist before arriving</td></tr>
+161|161|            <tr><td><strong><a href="https://www.google.com/search?q=Hong+Kong+Garden+dim+sum+Las+Vegas" target="_blank" rel="noopener" style="color:var(--gold); text-decoration:underline dotted; text-underline-offset:3px;">🍱 Hong Kong Garden</a></strong><br/><small>3407 S Jones Blvd</small></td><td>Dim Sum</td><td class="price">$20–35</td><td>Cart service on weekends. Har gow $5, siu mai $5, BBQ pork buns $4.50. Arrive before 11am weekends</td></tr>
+162|162|            <tr><td><strong><a href="https://www.google.com/search?q=Lotus+of+Siam+Las+Vegas+Thai+restaurant" target="_blank" rel="noopener" style="color:var(--gold); text-decoration:underline dotted; text-underline-offset:3px;">🍛 Lotus of Siam</a></strong><br/><small>620 E Flamingo Rd</small></td><td>Northern Thai 🏆</td><td class="price">$20–35</td><td>James Beard Award winner. Called "best Thai in America" by NYT &amp; Gourmet Magazine. Khao soi $22. Reserve ahead!</td></tr>
+163|163|            <tr><td><strong><a href="https://www.google.com/search?q=SweetHoney+Dessert+Las+Vegas+Chinatown" target="_blank" rel="noopener" style="color:var(--gold); text-decoration:underline dotted; text-underline-offset:3px;">🧊 SweetHoney Dessert</a></strong></td><td>Taiwanese Desserts</td><td class="price">Under $10</td><td>Shaved ice and bubble waffles. Perfect dessert stop after dinner</td></tr>
+164|164|          </tbody>
+165|165|        </table>
+166|166|      </div>
+167|167|
+168|168|      <div style="background:rgba(240,192,64,0.08); border-left:4px solid var(--gold); border-radius:0 8px 8px 0; padding:14px 16px; margin-top:16px; font-size:0.88rem; color:var(--text-muted);">
+169|169|        💡 <strong style="color:var(--text);">Pro tip:</strong> Many Chinatown restaurants are open until midnight–3am. Weera Thai and Hwaro Korean BBQ run until 3am on weekends — perfect for after pool matches!
+170|170|      </div>
+171|171|    </div>
+172|172|
+173|173|    <!-- FREMONT EAST -->
+174|174|    <div style="background:var(--card-bg); border:1px solid #444; border-radius:12px; padding:28px; margin-bottom:28px;">
+175|175|      <div style="display:flex; align-items:center; gap:12px; margin-bottom:8px; flex-wrap:wrap;">
+176|176|        <div style="font-size:2rem;">🍺</div>
+177|177|        <div>
+178|178|          <h3 style="color:var(--gold); font-size:1.4rem;">Fremont East District</h3>
+179|179|          <p style="color:var(--text-muted); font-size:0.85rem;">~2.2 miles from SAHARA · 8–15 min · Uber ~$8–12 · Closest off-strip area!</p>
+180|180|        </div>
+181|181|      </div>
+182|182|      <p style="color:var(--text-muted); margin-bottom:16px; font-size:0.9rem;">East of the Fremont Street Experience — this is where the locally-owned bars and restaurants are. Historic, gritty, real Vegas. The Deuce bus goes here from the Strip for $6.</p>
+183|183|
+184|184|      <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(180px,1fr)); gap:10px; margin-bottom:20px;">
+185|185|        <div style="background:rgba(40,167,69,0.1); border:1px solid #28a745; border-radius:8px; padding:12px; font-size:0.85rem;">
+186|186|          <strong style="color:#28a745; display:block; margin-bottom:4px;">🚕 Uber/Lyft</strong>
+187|187|          <span style="color:var(--text-muted);">~$8–12 one-way · 8–15 min · Closest off-strip area to SAHARA!</span>
+188|188|        </div>
+189|189|        <div style="background:rgba(79,195,247,0.1); border:1px solid #4fc3f7; border-radius:8px; padding:12px; font-size:0.85rem;">
+190|190|          <strong style="color:#4fc3f7; display:block; margin-bottom:4px;">🚌 Deuce Bus — $6/day</strong>
+191|191|          <span style="color:var(--text-muted);">Catch it on the Strip (southbound from SAHARA area) to Downtown. Unlimited rides all day</span>
+192|192|        </div>
+193|193|        <div style="background:rgba(255,152,0,0.1); border:1px solid #ff9800; border-radius:8px; padding:12px; font-size:0.85rem;">
+194|194|          <strong style="color:#ff9800; display:block; margin-bottom:4px;">🚗 Self-Drive</strong>
+195|195|          <span style="color:var(--text-muted);">Metered street parking + cheap public lots. ~$4–8 to park for the evening</span>
+196|196|        </div>
+197|197|        <div style="background:rgba(240,192,64,0.1); border:1px solid var(--gold); border-radius:8px; padding:12px; font-size:0.85rem;">
+198|198|          <strong style="color:var(--gold); display:block; margin-bottom:4px;">🆓 Free Shuttle (daytime)</strong>
+199|199|          <span style="color:var(--text-muted);">Downtown Loop shuttle is FREE — runs through downtown &amp; to the Strat, near SAHARA</span>
+200|200|        </div>
+201|201|      </div>
+202|202|
+203|203|      <div class="table-wrap">
+204|204|        <table>
+205|205|          <thead><tr><th>Venue</th><th>Type</th><th>Price</th><th>Why Go</th></tr></thead>
+206|206|          <tbody>
+207|207|            <tr><td><strong><a href="https://www.google.com/search?q=Evel+Pie+Las+Vegas+downtown+pizza" target="_blank" rel="noopener" style="color:var(--gold); text-decoration:underline dotted; text-underline-offset:3px;">🍕 Evel Pie</a></strong><br/><small>508 E Fremont St</small></td><td>Pizza + Bar</td><td class="price">$8 slice+beer ✅</td><td>Evel Knievel themed, irreverent, great pizza. Verified $8 combo still holds. Open until 4am Fri–Sat!</td></tr>
+208|208|            <tr><td><strong><a href="https://www.google.com/search?q=Le+Thai+Las+Vegas+Fremont+East" target="_blank" rel="noopener" style="color:var(--gold); text-decoration:underline dotted; text-underline-offset:3px;">🍜 Le Thai</a></strong></td><td>Thai</td><td class="price">$12–20</td><td>A catalyst for the whole Fremont East revival. Short rib fried rice, pad thai. Full bar</td></tr>
+209|209|            <tr><td><strong><a href="https://www.google.com/search?q=Atomic+Liquors+Las+Vegas+oldest+bar" target="_blank" rel="noopener" style="color:var(--gold); text-decoration:underline dotted; text-underline-offset:3px;">🍺 Atomic Liquors</a></strong><br/><small>917 E Fremont St</small></td><td>Historic Bar</td><td class="price">Drinks only</td><td>Las Vegas' <strong>OLDEST freestanding bar</strong> — est. 1952, liquor license #00001. Where Sinatra, Dean Martin drank. A must-visit piece of Vegas history!</td></tr>
+210|210|            <tr><td><strong><a href="https://www.google.com/search?q=Downtown+Container+Park+Las+Vegas" target="_blank" rel="noopener" style="color:var(--gold); text-decoration:underline dotted; text-underline-offset:3px;">📦 Container Park</a></strong></td><td>Free Attraction</td><td class="price">FREE to enter</td><td>Shopping, dining, live music — all inside repurposed shipping containers. Anchored by a fire-breathing praying mantis (from Burning Man). Kids love it!</td></tr>
+211|211|            <tr><td><strong><a href="https://www.google.com/search?q=Neon+Museum+Las+Vegas" target="_blank" rel="noopener" style="color:var(--gold); text-decoration:underline dotted; text-underline-offset:3px;">🏛️ Neon Museum</a></strong></td><td>Museum</td><td class="price">~$20–25/adult</td><td>200+ vintage casino neon signs. Night tours are incredible — book in advance. Uniquely Vegas!</td></tr>
+212|212|            <tr><td><strong><a href="https://www.google.com/search?q=Binion's+million+dollar+display+Las+Vegas" target="_blank" rel="noopener" style="color:var(--gold); text-decoration:underline dotted; text-underline-offset:3px;">💵 Binion's $1M Display</a></strong></td><td>Free Attraction</td><td class="price">FREE</td><td>Stand behind $1 million in cash and get a free photo. Open 24/7. Classic Vegas!</td></tr>
+213|213|            <tr><td><strong><a href="https://www.google.com/search?q=SlotZilla+zip+line+Fremont+Street+Las+Vegas" target="_blank" rel="noopener" style="color:var(--gold); text-decoration:underline dotted; text-underline-offset:3px;">🎰 SlotZilla Zip Line</a></strong></td><td>Activity</td><td class="price">$30–65</td><td>Two zip line levels soaring over the Fremont Street LED canopy. Insane fun for the team!</td></tr>
+214|214|          </tbody>
+215|215|        </table>
+216|216|      </div>
+217|217|    </div>
+218|218|
+219|219|    <!-- SUMMARY -->
+220|220|    <div style="background:rgba(240,192,64,0.08); border:2px solid var(--gold); border-radius:12px; padding:24px;">
+221|221|      <h3 style="color:var(--gold); margin-bottom:16px;">🗓️ Suggested Team Day Trips</h3>
+222|222|      <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap:16px;">
+223|223|        <div style="background:var(--card-bg); border-radius:10px; padding:16px;">
+224|224|          <strong style="color:var(--gold); display:block; margin-bottom:8px;">🎨 Arts District Day</strong>
+225|225|          <ul style="color:var(--text-muted); list-style:none; font-size:0.88rem; display:grid; gap:4px;">
+226|226|            <li>☀️ Afternoon: Mural walk + Antique Alley (FREE)</li>
+227|227|            <li>🍖 Dinner: SoulBelly BBQ + beers ($20–25/pp)</li>
+228|228|            <li>🍺 Night: Bar hop Main St</li>
+229|229|            <li>💰 Total est: $30–40/person</li>
+230|230|          </ul>
+231|231|        </div>
+232|232|        <div style="background:var(--card-bg); border-radius:10px; padding:16px;">
+233|233|          <strong style="color:var(--gold); display:block; margin-bottom:8px;">🍜 Chinatown Food Crawl</strong>
+234|234|          <ul style="color:var(--text-muted); list-style:none; font-size:0.88rem; display:grid; gap:4px;">
+235|235|            <li>🕐 Lunch: Gen Korean BBQ AYCE ($22)</li>
+236|236|            <li>🍜 Snack: Monta Ramen ($15)</li>
+237|237|            <li>🧊 Dessert: SweetHoney shaved ice ($8)</li>
+238|238|            <li>💰 Total est: $30–40/person</li>
+239|239|          </ul>
+240|240|        </div>
+241|241|        <div style="background:var(--card-bg); border-radius:10px; padding:16px;">
+242|242|          <strong style="color:var(--gold); display:block; margin-bottom:8px;">🍺 Fremont Night Out</strong>
+243|243|          <ul style="color:var(--text-muted); list-style:none; font-size:0.88rem; display:grid; gap:4px;">
+244|244|            <li>🌭 Pre-drinks: Stage Door ($3 dog+beer)</li>
+245|245|            <li>🎶 Fremont St Experience (FREE show)</li>
+246|246|            <li>🍕 Late: Evel Pie slice+beer ($8)</li>
+247|247|            <li>🍺 Finish: Atomic Liquors (historic!)</li>
+248|248|            <li>💰 Total est: $20–30/person</li>
+249|249|          </ul>
+250|250|        </div>
+251|251|      </div>
+252|252|    </div>
+253|253|  </section>
+254|254|
+255|255|  <footer>
+256|256|    <p>🎱 Les Schtroumpfs – CPA League Champions 2026 | Las Vegas, Aug 9–16</p>
+257|257|    <p><small>Info sourced from YouTube research + verified against Yelp, TripAdvisor, and official sources June 2026. Prices may vary.</small></p>
+258|258|  </footer>
+259|259|
+260|260|  <script>
+261|261|    if ('serviceWorker' in navigator) {
+262|262|      window.addEventListener('load', () => navigator.serviceWorker.register('./sw.js', { updateViaCache: 'none' }));
+263|263|    }
+264|264|  </script>
+265|265|</body>
+266|266|</html>
+267|267|

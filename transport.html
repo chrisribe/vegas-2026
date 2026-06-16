@@ -11,95 +11,117 @@
   <title>🚇 Getting Around – Vegas 2026</title>
   <link rel="stylesheet" href="style.css" />
   <style>
-    .transport-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-      gap: 20px;
-      margin-bottom: 40px;
-    }
-    @media (max-width: 640px) {
-      .transport-grid { grid-template-columns: 1fr; }
-    }
-    .transport-card {
-      background: var(--card-bg);
-      border-radius: var(--radius);
-      padding: 20px;
-      border: 1px solid rgba(240,192,64,0.15);
-      position: relative;
-    }
-    .transport-card.featured {
-      border-color: var(--gold);
-      box-shadow: 0 0 18px rgba(240,192,64,0.2);
-    }
-    .transport-card .card-icon {
-      font-size: 2rem;
-      margin-bottom: 10px;
-    }
-    .transport-card h3 {
-      color: var(--gold);
-      font-size: 1.1rem;
-      margin-bottom: 6px;
-    }
-    .transport-card p {
-      color: var(--text-muted);
-      font-size: 0.9rem;
-      line-height: 1.55;
-      margin-bottom: 12px;
-    }
-    .price-table {
-      width: 100%;
-      border-collapse: collapse;
-      font-size: 0.85rem;
-      margin-top: 10px;
-    }
-    .price-table th {
-      text-align: left;
-      color: var(--gold);
-      padding: 4px 8px;
-      border-bottom: 1px solid rgba(240,192,64,0.3);
-    }
-    .price-table td {
-      padding: 5px 8px;
-      color: var(--text);
-      border-bottom: 1px solid rgba(255,255,255,0.05);
-    }
-    .badge {
-      display: inline-block;
-      font-size: 0.7rem;
-      font-weight: 700;
-      padding: 2px 8px;
-      border-radius: 20px;
-      margin-bottom: 10px;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-    }
-    .badge-free   { background: #155724; color: #7dffa0; }
-    .badge-best   { background: #856404; color: #ffe082; }
-    .badge-budget { background: #0c4a6e; color: #7dd3fc; }
-    .badge-fun    { background: #4a1d96; color: #d8b4fe; }
-    .badge-tip    { background: #7f1d1d; color: #fca5a5; }
-    .tip-row {
-      background: var(--card-bg);
-      border-radius: var(--radius);
-      padding: 16px 20px;
-      border-left: 4px solid var(--gold);
-      margin-bottom: 14px;
-      font-size: 0.9rem;
-    }
-    .tip-row strong { color: var(--gold); }
-    .tip-row p { color: var(--text-muted); margin-top: 4px; }
-    .section-note {
+    .hotel-note {
       background: rgba(240,192,64,0.08);
-      border: 1px solid rgba(240,192,64,0.25);
+      border: 1px solid rgba(240,192,64,0.3);
       border-radius: 10px;
-      padding: 14px 18px;
-      margin-bottom: 32px;
+      padding: 12px 18px;
+      margin-bottom: 28px;
       font-size: 0.88rem;
       color: var(--text-muted);
     }
-    .section-note strong { color: var(--gold); }
-    .hours-row { display: flex; justify-content: space-between; font-size: 0.82rem; padding: 3px 0; border-bottom: 1px solid rgba(255,255,255,0.05); }
-    .hours-row span:last-child { color: var(--text-muted); }
+    .hotel-note strong { color: var(--gold); }
+
+    /* ── Transport grid ── */
+    .tgrid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      margin-bottom: 36px;
+    }
+    @media (max-width: 900px) { .tgrid { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 560px) { .tgrid { grid-template-columns: 1fr; } }
+
+    .tcard {
+      background: var(--card-bg);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 12px;
+      padding: 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .tcard.featured {
+      border-color: var(--gold);
+      box-shadow: 0 0 14px rgba(240,192,64,0.15);
+    }
+    .tcard.span2 { grid-column: span 2; }
+    @media (max-width: 900px) { .tcard.span2 { grid-column: span 1; } }
+
+    .tcard-top {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .tcard-icon { font-size: 1.6rem; line-height: 1; }
+    .tcard-title { font-size: 1rem; font-weight: 700; color: var(--gold); }
+    .tcard-subtitle { font-size: 0.78rem; color: var(--text-muted); margin-top: 1px; }
+
+    .badge {
+      display: inline-block;
+      font-size: 0.68rem;
+      font-weight: 700;
+      padding: 2px 8px;
+      border-radius: 20px;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      align-self: flex-start;
+    }
+    .b-free   { background:#155724; color:#7dffa0; }
+    .b-best   { background:#856404; color:#ffe082; }
+    .b-budget { background:#0c4a6e; color:#7dd3fc; }
+    .b-fun    { background:#4a1d96; color:#d8b4fe; }
+
+    .tcard ul {
+      margin: 0;
+      padding-left: 16px;
+      font-size: 0.84rem;
+      color: var(--text-muted);
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
+    }
+    .tcard ul li strong { color: var(--text); }
+
+    .price-row {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.82rem;
+      padding: 3px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+      color: var(--text-muted);
+    }
+    .price-row span:last-child { color: var(--text); font-weight: 600; }
+
+    .stops-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2px 16px;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 4px;
+    }
+    .stops-grid span { padding: 2px 0; border-bottom: 1px solid rgba(255,255,255,0.04); }
+
+    .warn { font-size: 0.78rem; color: #fca5a5; margin-top: 4px; }
+    .info { font-size: 0.78rem; color: #7dd3fc; margin-top: 4px; }
+
+    /* ── Quick tips strip ── */
+    .tips-strip {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 12px;
+      margin-bottom: 16px;
+    }
+    .tip-chip {
+      background: var(--card-bg);
+      border-left: 3px solid var(--gold);
+      border-radius: 0 8px 8px 0;
+      padding: 10px 14px;
+      font-size: 0.84rem;
+    }
+    .tip-chip strong { color: var(--gold); display: block; margin-bottom: 3px; font-size: 0.85rem; }
+    .tip-chip p { color: var(--text-muted); margin: 0; }
   </style>
 </head>
 <body>
@@ -124,198 +146,205 @@
   <section>
     <span class="section-label">Moving around the city</span>
     <h2>🚇 Getting Around Vegas</h2>
-    <p style="color:var(--text-muted); margin-bottom:28px;">The Strip is 4.2 miles long — don't walk everything in August heat! Here's every way to get around, from free to fast.</p>
+    <p style="color:var(--text-muted); margin-bottom:20px;">The Strip is 4.2 miles — don't walk in August heat! Options ordered closest to SAHARA first.</p>
 
-    <div class="section-note">
-      <strong>📍 Your Hotels:</strong> Most of the team is at <strong>SAHARA</strong> (north end of Strip, last Monorail stop) · Some teammates at <strong>Westgate</strong> (connected to Vegas Loop tunnel). Use the Monorail to meet up — it's quick and cheap!
+    <div class="hotel-note">
+      📍 <strong>SAHARA</strong> = north end of Strip, last Monorail stop · <strong>Westgate</strong> = Vegas Loop connector · Walk to The Strat to catch the free Downtown Loop shuttle
     </div>
 
-    <!-- ===== MONORAIL ===== -->
-    <h3 style="color:var(--gold); margin-bottom:16px; font-size:1.2rem;">🚇 Las Vegas Monorail — Best for Your Team</h3>
-    <div class="transport-grid" style="margin-bottom:40px;">
-      <div class="transport-card featured">
-        <div class="card-icon">🚇</div>
-        <span class="badge badge-best">⭐ Best Pick</span>
-        <h3>Monorail — MGM Grand → SAHARA</h3>
-        <p>Runs along the east side of the Strip with 7 stops. <strong>SAHARA is the last stop</strong> — perfect for your hotel. Fast, air-conditioned, no traffic.</p>
-        <table class="price-table">
-          <tr><th>Pass</th><th>Price</th></tr>
-          <tr><td>Single ride (online)</td><td>$5.50</td></tr>
-          <tr><td>Single ride (kiosk)</td><td>$6.00</td></tr>
-          <tr><td>1-Day pass</td><td>$15</td></tr>
-          <tr><td>3-Day pass</td><td>$34</td></tr>
-          <tr><td>7-Day pass</td><td>$57.50</td></tr>
-        </table>
-        <p style="margin-top:12px;"><strong>Runs every 4–8 min</strong></p>
-        <div class="hours-row"><span>Mon</span><span>7am – Midnight</span></div>
-        <div class="hours-row"><span>Tue–Thu</span><span>7am – 2am</span></div>
-        <div class="hours-row"><span>Fri–Sun</span><span>7am – 3am</span></div>
+    <!-- ══════════════ TRANSPORT GRID ══════════════ -->
+    <div class="tgrid">
+
+      <!-- 1. MONORAIL — at SAHARA, span 2 -->
+      <div class="tcard featured span2">
+        <div class="tcard-top">
+          <span class="tcard-icon">🚇</span>
+          <div>
+            <div class="tcard-title">Las Vegas Monorail</div>
+            <div class="tcard-subtitle">Literally at your hotel — SAHARA is stop #7 (last stop)</div>
+          </div>
+          <span class="badge b-best" style="margin-left:auto;">⭐ At SAHARA</span>
+        </div>
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-top:4px;">
+          <div>
+            <div style="font-size:0.78rem; color:var(--gold); font-weight:700; margin-bottom:6px;">PRICES</div>
+            <div class="price-row"><span>Single (online)</span><span>$5.50</span></div>
+            <div class="price-row"><span>Single (kiosk)</span><span>$6.00</span></div>
+            <div class="price-row"><span>1-Day pass</span><span>$15</span></div>
+            <div class="price-row"><span>3-Day pass</span><span>$34</span></div>
+            <div class="price-row"><span>7-Day pass</span><span>$57.50</span></div>
+            <div style="font-size:0.78rem; color:var(--text-muted); margin-top:8px;">Runs every <strong style="color:var(--text);">4–8 min</strong></div>
+            <div class="price-row" style="margin-top:4px;"><span>Mon</span><span>7am – Midnight</span></div>
+            <div class="price-row"><span>Tue–Thu</span><span>7am – 2am</span></div>
+            <div class="price-row"><span>Fri–Sun</span><span>7am – 3am</span></div>
+          </div>
+          <div>
+            <div style="font-size:0.78rem; color:var(--gold); font-weight:700; margin-bottom:6px;">7 STOPS (south → north)</div>
+            <div class="stops-grid">
+              <span>1 MGM Grand</span>
+              <span>2 Bally's / Paris</span>
+              <span>3 Flamingo / Caesars</span>
+              <span>4 Harrah's / LINQ</span>
+              <span>5 Convention Center</span>
+              <span>6 Westgate 🚙</span>
+              <span style="color:var(--gold); font-weight:700;">7 ⭐ SAHARA</span>
+            </div>
+            <div class="info" style="margin-top:8px;">💡 Buy passes online at lvmonorail.com to save $0.50/ride</div>
+          </div>
+        </div>
       </div>
 
-      <div class="transport-card">
-        <div class="card-icon">🗺️</div>
-        <h3>Monorail Stops</h3>
-        <p>From south to north:</p>
-        <table class="price-table">
-          <tr><td>1</td><td>MGM Grand</td></tr>
-          <tr><td>2</td><td>Bally's / Paris</td></tr>
-          <tr><td>3</td><td>Flamingo / Caesars Palace</td></tr>
-          <tr><td>4</td><td>Harrah's / LINQ</td></tr>
-          <tr><td>5</td><td>Las Vegas Convention Center</td></tr>
-          <tr><td>6</td><td>Westgate (Vegas Loop connector!)</td></tr>
-          <tr><td>7 ⭐</td><td><strong>SAHARA (your hotel!)</strong></td></tr>
-        </table>
-        <p style="margin-top:10px; font-size:0.82rem;">Buy tickets at kiosks or online at lvmonorail.com</p>
+      <!-- 2. DOWNTOWN LOOP — walk to Strat -->
+      <div class="tcard featured span2">
+        <div class="tcard-top">
+          <span class="tcard-icon">🚐</span>
+          <div>
+            <div class="tcard-title">Downtown Loop Shuttle</div>
+            <div class="tcard-subtitle">Walk to The Strat → ride free to all of downtown</div>
+          </div>
+          <span class="badge b-free" style="margin-left:auto;">FREE</span>
+        </div>
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-top:4px;">
+          <div>
+            <div style="font-size:0.78rem; color:var(--gold); font-weight:700; margin-bottom:6px;">12 STOPS</div>
+            <div class="stops-grid">
+              <span>1 Bonneville Transit</span>
+              <span>2 Symphony Park</span>
+              <span>3 🛍️ N. Premium Outlets</span>
+              <span>4 City Hall</span>
+              <span>5 🎪 Fremont St Exp.</span>
+              <span>6 🎰 Circa Resort</span>
+              <span>7 🏛️ Mob Museum</span>
+              <span>8 🍺 Fremont East</span>
+              <span>9 Pawn Plaza</span>
+              <span>10 🎨 Arts District N.</span>
+              <span style="color:var(--gold); font-weight:700;">11 ⭐ The Strat</span>
+              <span>12 🎨 Arts District S.</span>
+            </div>
+          </div>
+          <div>
+            <div style="font-size:0.78rem; color:var(--gold); font-weight:700; margin-bottom:6px;">HOURS</div>
+            <div class="price-row"><span>Sun–Thu</span><span>11am – 6pm</span></div>
+            <div class="price-row"><span>Fri–Sat</span><span>3pm – 10pm</span></div>
+            <div class="warn">⚠️ Limited hours! After 6pm weekdays or before 3pm weekends → use Deuce Bus or Uber instead</div>
+            <div class="info" style="margin-top:8px;">💡 Covers Arts District, Fremont, Mob Museum, Circa — all free from SAHARA area!</div>
+          </div>
+        </div>
       </div>
-    </div>
 
-    <!-- ===== FREE TRAMS ===== -->
-    <h3 style="color:var(--gold); margin-bottom:16px; font-size:1.2rem;">🚃 Free Trams — Use These!</h3>
-    <div class="transport-grid" style="margin-bottom:40px;">
-      <div class="transport-card">
-        <div class="card-icon">🚃</div>
-        <span class="badge badge-free">FREE</span>
-        <h3>South Tram: Mandalay Bay ↔ Excalibur</h3>
-        <p>Connects Mandalay Bay, Luxor, and Excalibur. Great for the south end of the strip. No guest key required!</p>
+      <!-- 3. DEUCE BUS -->
+      <div class="tcard">
+        <div class="tcard-top">
+          <span class="tcard-icon">🚌</span>
+          <div>
+            <div class="tcard-title">Deuce Bus</div>
+            <div class="tcard-subtitle">24/7 · Strip to Fremont St · Every 15 min</div>
+          </div>
+        </div>
+        <span class="badge b-budget">Budget · 24/7</span>
+        <div class="price-row"><span>Single ride</span><span>$4</span></div>
+        <div class="price-row"><span>2-hour pass</span><span>$6</span></div>
+        <div class="price-row"><span>24-hour pass</span><span>$8</span></div>
+        <div class="price-row"><span>3-day pass 🔥</span><span>$20</span></div>
+        <div class="info">💡 Best for late nights when the Loop is closed. Slow in traffic but runs all night.</div>
+        <div style="font-size:0.78rem; color:var(--text-muted);">Pay via RTC app, kiosk, or on bus (exact cash or 1-ride card only)</div>
       </div>
-      <div class="transport-card">
-        <div class="card-icon">🚃</div>
-        <span class="badge badge-free">FREE</span>
-        <h3>Mid-Strip Tram: Bellagio ↔ Park MGM</h3>
-        <p>Connects Aria, Park MGM, Crystals shopping, and the Bellagio. Cuts across the middle of the strip for free!</p>
-      </div>
-    </div>
 
-    <!-- ===== VEGAS LOOP ===== -->
-    <h3 style="color:var(--gold); margin-bottom:16px; font-size:1.2rem;">🚙 Vegas Loop — Underground Tunnels (Boring Company)</h3>
-    <div class="transport-grid" style="margin-bottom:40px;">
-      <div class="transport-card featured">
-        <div class="card-icon">🚙</div>
-        <span class="badge badge-fun">Futuristic</span>
-        <h3>Vegas Loop — Tesla Tunnels</h3>
-        <p>Underground tunnel system using Tesla cars. Fast and air-conditioned. Open stations as of 2026:</p>
-        <table class="price-table">
-          <tr><td>✅</td><td>Las Vegas Convention Center</td></tr>
-          <tr><td>✅</td><td>Resorts World</td></tr>
-          <tr><td>✅</td><td><strong>Westgate</strong> (your teammates' hotel!)</td></tr>
-          <tr><td>✅</td><td>Encore / Wynn</td></tr>
-        </table>
-        <table class="price-table" style="margin-top:12px;">
-          <tr><th>Pass</th><th>Price</th></tr>
-          <tr><td>Single ride</td><td>$4.25</td></tr>
-          <tr><td>Round trip</td><td>$7.00</td></tr>
-          <tr><td>Day pass</td><td>$12.50</td></tr>
-          <tr><td>Airport ride</td><td>$12.50</td></tr>
-        </table>
-        <p style="margin-top:10px; font-size:0.82rem;">⚠️ Airport connection may be operational by Aug 2026 — worth checking!</p>
+      <!-- 4. FREE TRAMS -->
+      <div class="tcard">
+        <div class="tcard-top">
+          <span class="tcard-icon">🚃</span>
+          <div>
+            <div class="tcard-title">Free Trams</div>
+            <div class="tcard-subtitle">Mid & south strip — no key required</div>
+          </div>
+        </div>
+        <span class="badge b-free">FREE</span>
+        <ul>
+          <li><strong>Mid-Strip:</strong> Bellagio ↔ Park MGM ↔ Aria ↔ Crystals</li>
+          <li><strong>South:</strong> Mandalay Bay ↔ Luxor ↔ Excalibur</li>
+        </ul>
+        <div class="info">💡 Saves a lot of walking in the heat. No need to be a hotel guest!</div>
       </div>
-    </div>
 
-    <!-- ===== DEUCE BUS ===== -->
-    <h3 style="color:var(--gold); margin-bottom:16px; font-size:1.2rem;">🚌 Deuce Bus — Budget Option</h3>
-    <div class="transport-grid" style="margin-bottom:40px;">
-      <div class="transport-card">
-        <div class="card-icon">🚌</div>
-        <span class="badge badge-budget">Budget</span>
-        <h3>The Deuce — Double-Decker Bus</h3>
-        <p>Runs 24/7 from South Premium Outlets (below Mandalay Bay) all the way to Fremont Street. Over 25 stops. Runs every 15 min — but <strong>slow in Strip traffic</strong>.</p>
-        <table class="price-table">
-          <tr><th>Pass</th><th>Price</th></tr>
-          <tr><td>Single ride</td><td>$4.00</td></tr>
-          <tr><td>2-hour pass</td><td>$6.00</td></tr>
-          <tr><td>24-hour pass</td><td>$8.00</td></tr>
-          <tr><td>3-day pass</td><td><strong>$20.00 🔥</strong></td></tr>
-        </table>
-        <p style="margin-top:10px; font-size:0.82rem;">Pay at kiosk, in the app, or on the bus (exact cash or card for 1 ride only). Download the RTC app!</p>
+      <!-- 5. VEGAS LOOP -->
+      <div class="tcard">
+        <div class="tcard-top">
+          <span class="tcard-icon">🚙</span>
+          <div>
+            <div class="tcard-title">Vegas Loop</div>
+            <div class="tcard-subtitle">Boring Co. Tesla tunnels · Westgate for teammates</div>
+          </div>
+        </div>
+        <span class="badge b-fun">Futuristic</span>
+        <ul>
+          <li>Convention Center</li>
+          <li>Resorts World</li>
+          <li><strong>Westgate</strong> (teammates' hotel!) 🏨</li>
+          <li>Encore / Wynn</li>
+        </ul>
+        <div class="price-row"><span>Single ride</span><span>$4.25</span></div>
+        <div class="price-row"><span>Round trip</span><span>$7.00</span></div>
+        <div class="price-row"><span>Day pass / Airport</span><span>$12.50</span></div>
+        <div class="warn">⚠️ Airport link may be open by Aug — check before you land!</div>
       </div>
-    </div>
 
-    <!-- ===== ZOOX ===== -->
-    <h3 style="color:var(--gold); margin-bottom:16px; font-size:1.2rem;">🤖 Zoox — Self-Driving Cars (Currently FREE!)</h3>
-    <div class="transport-grid" style="margin-bottom:40px;">
-      <div class="transport-card featured">
-        <div class="card-icon">🤖</div>
-        <span class="badge badge-free">Currently FREE</span>
-        <h3>Zoox — Autonomous Driverless Cars</h3>
-        <p>Little toaster-shaped driverless cars you summon via app. Currently <strong>totally free</strong> — worth trying for the experience alone! Pickup/dropoff spots:</p>
-        <table class="price-table">
-          <tr><td>📍</td><td>New York New York</td></tr>
-          <tr><td>📍</td><td>Luxor</td></tr>
-          <tr><td>📍</td><td>Excalibur</td></tr>
-          <tr><td>📍</td><td>Area 15</td></tr>
-          <tr><td>📍</td><td>Fashion Show Mall</td></tr>
-        </table>
-        <p style="margin-top:10px; font-size:0.82rem;">⚠️ 4-seater, can feel warm inside, slight motion sickness possible. Seat belt required or it threatens to end your ride 😂</p>
+      <!-- 6. ZOOX -->
+      <div class="tcard">
+        <div class="tcard-top">
+          <span class="tcard-icon">🤖</span>
+          <div>
+            <div class="tcard-title">Zoox</div>
+            <div class="tcard-subtitle">Driverless self-driving cars · order via app</div>
+          </div>
+        </div>
+        <span class="badge b-free">Currently FREE</span>
+        <ul>
+          <li>NY NY · Luxor · Excalibur</li>
+          <li>Area 15 · Fashion Show Mall</li>
+        </ul>
+        <div class="info">💡 Totally free right now — try it for the experience! 4-seater toaster car.</div>
+        <div class="warn">⚠️ Can feel warm inside, slight motion sickness, seat belt enforced 😂</div>
       </div>
-    </div>
 
-    <!-- ===== UBER / LYFT / TAXI ===== -->
-    <h3 style="color:var(--gold); margin-bottom:16px; font-size:1.2rem;">🚕 Uber, Lyft & Taxis</h3>
-    <div class="transport-grid" style="margin-bottom:40px;">
-      <div class="transport-card">
-        <div class="card-icon">📱</div>
-        <span class="badge badge-tip">Pro Tip</span>
-        <h3>Uber vs Lyft — Always Compare!</h3>
-        <p>Prices can differ by <strong>50%+</strong> between the two apps. Keep both installed and check before ordering. Always find the designated <strong>ride share pickup area</strong> at each hotel before you call — it's not always near the entrance.</p>
+      <!-- 7. UBER / LYFT / TAXI -->
+      <div class="tcard">
+        <div class="tcard-top">
+          <span class="tcard-icon">🚕</span>
+          <div>
+            <div class="tcard-title">Uber / Lyft / Taxi</div>
+            <div class="tcard-subtitle">Anywhere · always compare both apps</div>
+          </div>
+        </div>
+        <ul>
+          <li><strong>Always compare</strong> Uber vs Lyft — can differ 50%+</li>
+          <li>Find the <strong>ride share pickup area</strong> at each hotel first</li>
+          <li>Taxi flat rate from airport: <strong>$19–$27</strong></li>
+          <li>Taxis always at valet — no app needed</li>
+        </ul>
+        <div class="info">💡 Best option for Chinatown, late nights, and anywhere the Loop/Deuce don't reach.</div>
       </div>
-      <div class="transport-card">
-        <div class="card-icon">🚖</div>
-        <h3>Taxis</h3>
-        <p>Always available at every hotel valet — no app needed. Flat rates from the airport: <strong>$19–$27</strong> depending on your zone on the Strip. May cost slightly more than Uber/Lyft mid-Strip.</p>
-      </div>
-    </div>
 
-    <!-- ===== DOWNTOWN LOOP ===== -->
-    <h3 style="color:var(--gold); margin-bottom:16px; font-size:1.2rem;">🚐 Downtown Loop — Free Shuttle</h3>
-    <div class="transport-grid" style="margin-bottom:40px;">
-      <div class="transport-card featured">
-        <div class="card-icon">🚐</div>
-        <span class="badge badge-free">FREE</span>
-        <h3>Downtown Loop — 12 Stops</h3>
-        <p>City-funded FREE shuttle covering all of downtown. Your connection: <strong>SAHARA → walk to The Strat (stop 11) → ride anywhere downtown for free!</strong></p>
-        <table class="price-table" style="margin-bottom:12px;">
-          <tr><th>#</th><th>Stop</th></tr>
-          <tr><td>1</td><td>Bonneville Transit Center</td></tr>
-          <tr><td>2</td><td>Symphony Park</td></tr>
-          <tr><td>3</td><td>🛍️ LV North Premium Outlets</td></tr>
-          <tr><td>4</td><td>City Hall</td></tr>
-          <tr><td>5</td><td>🎪 Fremont Street Experience</td></tr>
-          <tr><td>6</td><td>🎰 Circa Resort &amp; Casino</td></tr>
-          <tr><td>7</td><td>🏛️ The Mob Museum</td></tr>
-          <tr><td>8</td><td>🍺 Fremont East</td></tr>
-          <tr><td>9</td><td>Pawn Plaza</td></tr>
-          <tr><td>10</td><td>🎨 Arts District North</td></tr>
-          <tr><td>11 ⭐</td><td><strong>The Strat</strong> (your connection from SAHARA!)</td></tr>
-          <tr><td>12</td><td>🎨 Arts District South</td></tr>
-        </table>
-        <div class="hours-row"><span>Sun–Thu</span><span>11am – 6pm</span></div>
-        <div class="hours-row"><span>Fri–Sat</span><span>3pm – 10pm</span></div>
-        <p style="margin-top:10px; font-size:0.82rem;">⚠️ Limited hours — after 6pm weekdays or before 3pm weekends, take the Deuce bus or Uber instead.</p>
-      </div>
-    </div>
+    </div><!-- end tgrid -->
 
-    <!-- ===== QUICK TIPS ===== -->
-    <h3 style="color:var(--gold); margin-bottom:16px; font-size:1.2rem;">💡 Quick Transport Tips</h3>
-    <div style="margin-bottom:40px;">
-      <div class="tip-row">
-        <strong>🌡️ The Strip is BIGGER than it looks</strong>
-        <p>4.2 miles end to end — 90 min walk in flat conditions. In August heat, walk only 1–2 hotels max. Use trams, bus, or rideshare for anything further.</p>
+    <!-- ══════════════ QUICK TIPS ══════════════ -->
+    <h3 style="color:var(--gold); margin-bottom:14px; font-size:1.1rem;">💡 Quick Tips</h3>
+    <div class="tips-strip">
+      <div class="tip-chip">
+        <strong>🌡️ It's bigger than it looks</strong>
+        <p>4.2 miles end to end. In August heat, walk max 1–2 hotels — use trams or rides for anything further.</p>
       </div>
-      <div class="tip-row">
-        <strong>🏨 Walk THROUGH hotels, not outside</strong>
-        <p>Hotel interiors are air-conditioned and often faster. Example: walk through the Cosmopolitan to reach the Crystals — no stairs, full A/C.</p>
+      <div class="tip-chip">
+        <strong>🏨 Walk through hotels</strong>
+        <p>Hotel interiors = A/C + faster. Example: walk through Cosmopolitan to reach Crystals shops.</p>
       </div>
-      <div class="tip-row">
-        <strong>🅿️ SAHARA has free parking + free valet</strong>
-        <p>One of the last hotels on the Strip offering both. If anyone drove, park here and use the Monorail to explore the rest of the Strip.</p>
+      <div class="tip-chip">
+        <strong>🅿️ SAHARA = free parking + valet</strong>
+        <p>One of the last Strip hotels with both free. Park here, explore by Monorail.</p>
       </div>
-      <div class="tip-row">
-        <strong>✈️ From the Airport</strong>
-        <p>Free rental car shuttles run 24/7 to the car rental center. Taxi flat rate: $19–$27. Uber/Lyft: request inside the terminal so the car arrives when you step out. Screenshot your route to watch for long-hauling scams!</p>
-      </div>
-      <div class="tip-row">
-        <strong>🚗 Skip the rental car (unless leaving the Strip)</strong>
-        <p>Parking costs $15–$25/day at most hotels. Only rent if you're doing day trips (Zion, Mount Charleston, Red Rock, Henderson). Everything on the Strip is reachable without a car.</p>
+      <div class="tip-chip">
+        <strong>✈️ From the airport</strong>
+        <p>Request Uber inside terminal so it arrives as you step out. Screenshot route — scams happen!</p>
       </div>
     </div>
 
@@ -323,7 +352,7 @@
 
   <footer>
     <p>🎱 Les Schtroumpfs – CPA League Champions 2026 | Las Vegas, Aug 9–16</p>
-    <p><small>Transport info sourced from Vegas Mastery YouTube. Prices & availability may change — verify on-site.</small></p>
+    <p><small>Transport info sourced from Vegas Mastery YouTube. Prices may change — verify on-site.</small></p>
   </footer>
   <script>
     if ("serviceWorker" in navigator) {

@@ -16,33 +16,37 @@
   var nav = document.getElementById('main-nav');
   if (!nav) return;
 
-  nav.innerHTML = links.map(function(l) {
+  nav.innerHTML = links.map(function (l) {
     return '<a href="' + l.href + '"' + (current === l.href ? ' class="active"' : '') + '>' + l.label + '</a>';
   }).join('\n');
 
-  // Scroll so the active link is centred in the nav bar.
-  // Deferred to rAF so the browser has finished layout before we read offsetLeft.
+  // Declare wrap early so centerActive can reference it
+  var wrap = nav.parentElement;
+
+  // ── Active link centring ──────────────────────────────────────────────────
+  // scrollIntoView is far more reliable than manual offsetLeft math because
+  // it doesn't depend on font-load timing. We fire it twice:
+  //   1. immediately (works when fonts are cached / already loaded)
+  //   2. on window 'load' (catches the first visit when DM Sans is still fetching)
   var activeLink = nav.querySelector('a.active');
-  if (activeLink) {
-    requestAnimationFrame(function () {
-      var linkCenter = activeLink.offsetLeft + activeLink.offsetWidth / 2;
-      nav.scrollLeft = linkCenter - nav.offsetWidth / 2;
-      // Re-check the fade now that scrollLeft has been set
-      if (wrap && wrap.classList.contains('nav-scroll-wrap')) {
-        var atEnd = nav.scrollLeft + nav.offsetWidth >= nav.scrollWidth - 4;
-        wrap.classList.toggle('nav-end', atEnd);
-      }
-    });
+
+  function centerActive() {
+    if (!activeLink) return;
+    activeLink.scrollIntoView({ inline: 'center', block: 'nearest', behavior: 'instant' });
+    updateFade();
   }
 
-  // Fade/arrow hint: hide the › when fully scrolled to the right end
-  var wrap = nav.parentElement;
-  if (wrap && wrap.classList.contains('nav-scroll-wrap')) {
-    function updateFade() {
-      var atEnd = nav.scrollLeft + nav.offsetWidth >= nav.scrollWidth - 4;
-      wrap.classList.toggle('nav-end', atEnd);
-    }
-    nav.addEventListener('scroll', updateFade, { passive: true });
-    updateFade(); // run once on load (no overflow → hide arrow immediately)
+  centerActive();
+  window.addEventListener('load', centerActive);
+
+  // ── Fade / › arrow hint ───────────────────────────────────────────────────
+  // Hide the › once the user has scrolled all the way to the right.
+  function updateFade() {
+    if (!wrap || !wrap.classList.contains('nav-scroll-wrap')) return;
+    var atEnd = nav.scrollLeft + nav.offsetWidth >= nav.scrollWidth - 4;
+    wrap.classList.toggle('nav-end', atEnd);
   }
+
+  nav.addEventListener('scroll', updateFade, { passive: true });
+  updateFade(); // initial state (hides arrow when all links already fit)
 })();

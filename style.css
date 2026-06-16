@@ -317,6 +317,34 @@ footer {
 }
 
 /* ===== RESPONSIVE ===== */
+/* Notes column — mobile collapsible */
+.col-notes { display: table-cell; } /* default: visible */
+
+.note-toggle-btn {
+  background: none;
+  border: 1px solid var(--gold);
+  border-radius: 6px;
+  color: var(--gold);
+  cursor: pointer;
+  font-size: 0.8rem;
+  padding: 2px 6px;
+  margin-left: 6px;
+  vertical-align: middle;
+  white-space: nowrap;
+}
+
+.note-expand-row { display: none; }
+.note-expand-row.open { display: table-row; }
+
+.note-expand-cell {
+  background: rgba(240,192,64,0.06) !important;
+  border-top: none !important;
+  color: var(--text-muted);
+  font-size: 0.82rem;
+  line-height: 1.5;
+  padding: 10px 14px !important;
+}
+
 @media (max-width: 640px) {
   /* Header */
   .header-title h1 { font-size: 1rem; }
@@ -347,7 +375,8 @@ footer {
     margin-right: -14px;
     padding: 0 14px;
   }
-  table { font-size: 0.82rem; min-width: 480px; }
+  table { font-size: 0.82rem; min-width: unset; width: 100%; }
+  .col-notes { display: none; }
   th, td { padding: 8px 10px; }
 
   /* Map */

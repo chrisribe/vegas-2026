@@ -20,11 +20,19 @@
     return '<a href="' + l.href + '"' + (current === l.href ? ' class="active"' : '') + '>' + l.label + '</a>';
   }).join('\n');
 
-  // Scroll so the active link is centred in the nav bar
+  // Scroll so the active link is centred in the nav bar.
+  // Deferred to rAF so the browser has finished layout before we read offsetLeft.
   var activeLink = nav.querySelector('a.active');
   if (activeLink) {
-    var linkCenter = activeLink.offsetLeft + activeLink.offsetWidth / 2;
-    nav.scrollLeft = linkCenter - nav.offsetWidth / 2;
+    requestAnimationFrame(function () {
+      var linkCenter = activeLink.offsetLeft + activeLink.offsetWidth / 2;
+      nav.scrollLeft = linkCenter - nav.offsetWidth / 2;
+      // Re-check the fade now that scrollLeft has been set
+      if (wrap && wrap.classList.contains('nav-scroll-wrap')) {
+        var atEnd = nav.scrollLeft + nav.offsetWidth >= nav.scrollWidth - 4;
+        wrap.classList.toggle('nav-end', atEnd);
+      }
+    });
   }
 
   // Fade/arrow hint: hide the › when fully scrolled to the right end

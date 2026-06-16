@@ -88,22 +88,35 @@ header {
 }
 
 /* ===== NAV ===== */
-/* wrapper provides the right-edge fade hint */
+/* wrapper provides the right-edge fade + chevron hint */
 .nav-scroll-wrap {
   position: relative;
 }
 
+/* The fade + ›  arrow — hidden once user scrolls to the end */
 .nav-scroll-wrap::after {
-  content: '';
+  content: '›';
   position: absolute;
   top: 0;
   right: 0;
-  width: 40px;
-  height: 100%;
-  background: linear-gradient(to right, transparent, #0f3460);
+  width: 36px;
+  height: calc(100% - 10px); /* match nav bottom padding */
+  background: linear-gradient(to right, transparent 0%, #0f3460 55%);
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding-right: 6px;
+  color: var(--gold);
+  font-size: 1.1rem;
+  font-weight: 700;
   pointer-events: none;
-  border-radius: 0 0 0 0;
-  transition: opacity 0.3s;
+  transition: opacity 0.2s;
+  opacity: 1;
+}
+
+/* When nav is scrolled to the end, JS adds .nav-end → hide arrow */
+.nav-scroll-wrap.nav-end::after {
+  opacity: 0;
 }
 
 nav {

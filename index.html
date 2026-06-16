@@ -33,11 +33,21 @@
     <script src="nav.js"></script>
   </header>
 
+  <!-- COUNTDOWN SCRIPT (runs before render) -->
+  <script>
+    (function() {
+      window.VEGAS_START = new Date('2026-08-09T12:00:00-07:00'); // PDT check-in noon
+    })();
+  </script>
+
   <!-- HERO -->
   <section class="hero">
     <div class="hero-content">
       <h2>Viva Las Vegas! 🏆</h2>
       <p>We won the CPA league and now we're taking on Vegas! This guide has everything the team needs — cheap eats, where to stay, money-saving tips, and a map of all the spots.</p>
+      <!-- COUNTDOWN -->
+      <div class="countdown" id="countdown" aria-label="Days until Vegas"></div>
+
       <div class="hotel-badges">
         <div class="badge">🏨 SAHARA Hotel<br/><small>Most of the team</small></div>
         <div class="badge">🏨 Westgate Hotel<br/><small>Some teammates</small></div>
@@ -119,6 +129,43 @@
     <p>🎱 Les Schtroumpfs – CPA League Champions 2026 | Las Vegas, Aug 9–16</p>
     <p><small>Info sourced from YouTube research playlist. Prices may vary — always verify on-site.</small></p>
   </footer>
+
+  <!-- COUNTDOWN TIMER -->
+  <script>
+    (function () {
+      var cd = document.getElementById('countdown');
+      if (!cd || !window.VEGAS_START) return;
+
+      function update() {
+        var now = new Date();
+        var diff = window.VEGAS_START - now;
+
+        if (diff <= 0) {
+          cd.innerHTML = '<div class="countdown-block"><span class="countdown-num">🎱</span><span class="countdown-label">Vegas time!</span></div>';
+          return;
+        }
+
+        var days    = Math.floor(diff / 86400000);
+        var hours   = Math.floor((diff % 86400000) / 3600000);
+        var minutes = Math.floor((diff % 3600000)  / 60000);
+        var seconds = Math.floor((diff % 60000)    / 1000);
+
+        cd.innerHTML =
+          block(days,    'Days')    +
+          block(hours,   'Hours')   +
+          block(minutes, 'Minutes') +
+          block(seconds, 'Seconds');
+      }
+
+      function block(n, label) {
+        return '<div class="countdown-block"><span class="countdown-num">' + n +
+               '</span><span class="countdown-label">' + label + '</span></div>';
+      }
+
+      update();
+      setInterval(update, 1000);
+    })();
+  </script>
 
   <script>
     if ("serviceWorker" in navigator) {

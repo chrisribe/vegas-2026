@@ -1,13 +1,16 @@
-// notes-mobile.js — collapse Notes column on mobile into tap-to-expand rows
+// notes-mobile.js — collapse Notes/Must Try/Why Go column on mobile into tap-to-expand rows
 (function () {
   if (window.innerWidth > 640) return; // desktop: do nothing
 
+  // All column header names that should collapse on mobile
+  var COLLAPSIBLE = ['Notes', 'Must Try', 'Why Go'];
+
   document.querySelectorAll('table').forEach(function (table) {
-    // Find the Notes column index by header text
+    // Find the first collapsible column by header text
     var headers = table.querySelectorAll('thead th');
     var notesIdx = -1;
     headers.forEach(function (th, i) {
-      if (th.textContent.trim() === 'Notes') notesIdx = i;
+      if (notesIdx === -1 && COLLAPSIBLE.indexOf(th.textContent.trim()) !== -1) notesIdx = i;
     });
     if (notesIdx === -1) return;
 

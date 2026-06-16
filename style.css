@@ -88,6 +88,24 @@ header {
 }
 
 /* ===== NAV ===== */
+/* wrapper provides the right-edge fade hint */
+.nav-scroll-wrap {
+  position: relative;
+}
+
+.nav-scroll-wrap::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 40px;
+  height: 100%;
+  background: linear-gradient(to right, transparent, #0f3460);
+  pointer-events: none;
+  border-radius: 0 0 0 0;
+  transition: opacity 0.3s;
+}
+
 nav {
   display: flex;
   gap: 4px;

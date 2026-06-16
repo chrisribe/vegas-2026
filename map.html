@@ -1,336 +1,335 @@
-1|<!DOCTYPE html>
-2|<html lang="en">
-3|<head>
-4|  <meta charset="UTF-8" />
-5|  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-6|  <title>🗺️ Map – Vegas 2026</title>
-7|  <link rel="stylesheet" href="style.css" />
-8|  <link rel="manifest" href="manifest.json" />
-9|  <meta name="theme-color" content="#f0c040" />
-10|  <meta name="apple-mobile-web-app-capable" content="yes" />
-11|  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
-12|  <link rel="apple-touch-icon" href="icons/icon-192.png" />
-13|  <link rel="stylesheet" href="leaflet.css" />
-14|  <style>
-15|    #map { height: 520px; border-radius: 12px; border: 2px solid var(--gold); }
-16|    @media (max-width: 640px) { #map { height: 380px; } }
-17|
-18|    .legend {
-19|      display: flex; flex-wrap: wrap; gap: 12px;
-20|      margin: 16px 0 32px;
-21|    }
-22|    .legend-item {
-23|      display: flex; align-items: center; gap: 6px;
-24|      font-size: 0.85rem; color: var(--text-muted);
-25|    }
-26|    .legend-dot {
-27|      width: 14px; height: 14px; border-radius: 50%; flex-shrink: 0;
-28|    }
-29|
-30|    /* Leaflet popup dark theme */
-31|    .leaflet-popup-content-wrapper {
-32|      background: #16213e;
-33|      color: #e8e8e8;
-34|      border: 1px solid #f0c040;
-35|      border-radius: 10px;
-36|    }
-37|    .leaflet-popup-tip { background: #16213e; }
-38|    .leaflet-popup-content { margin: 12px 16px; font-size: 0.88rem; line-height: 1.5; }
-39|    .leaflet-popup-content b { color: #f0c040; }
-40|    .leaflet-popup-content .price { color: #28a745; font-weight: 700; }
-41|  </style>
-42|</head>
-43|<body>
-44|  <header>
-45|    <div class="header-inner">
-46|      <div class="header-title">
-47|        <span class="emoji-big">🎱</span>
-48|        <div>
-49|          <h1>Les Schtroumpfs à Vegas!</h1>
-50|          <p class="subtitle">CPA League Champions — Las Vegas · Aug 9–16, 2026</p>
-51|        </div>
-52|      </div>
-53|      <div class="translate-bar">
-54|        <a href="https://translate.google.com/translate?hl=fr&sl=en&tl=fr&u=https%3A%2F%2Fchrisribe.github.io%2Fvegas-2026%2Fmap.html"
-55|           target="_blank" class="translate-btn">🌐 Traduire en Français</a>
-56|      </div>
-57|    </div>
-58|        <nav id="main-nav"></nav>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>🗺️ Map – Vegas 2026</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="manifest" href="manifest.json" />
+  <meta name="theme-color" content="#f0c040" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <link rel="apple-touch-icon" href="icons/icon-192.png" />
+  <link rel="stylesheet" href="leaflet.css" />
+  <style>
+    #map { height: 520px; border-radius: 12px; border: 2px solid var(--gold); }
+    @media (max-width: 640px) { #map { height: 380px; } }
+
+    .legend {
+      display: flex; flex-wrap: wrap; gap: 12px;
+      margin: 16px 0 32px;
+    }
+    .legend-item {
+      display: flex; align-items: center; gap: 6px;
+      font-size: 0.85rem; color: var(--text-muted);
+    }
+    .legend-dot {
+      width: 14px; height: 14px; border-radius: 50%; flex-shrink: 0;
+    }
+
+    /* Leaflet popup dark theme */
+    .leaflet-popup-content-wrapper {
+      background: #16213e;
+      color: #e8e8e8;
+      border: 1px solid #f0c040;
+      border-radius: 10px;
+    }
+    .leaflet-popup-tip { background: #16213e; }
+    .leaflet-popup-content { margin: 12px 16px; font-size: 0.88rem; line-height: 1.5; }
+    .leaflet-popup-content b { color: #f0c040; }
+    .leaflet-popup-content .price { color: #28a745; font-weight: 700; }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="header-inner">
+      <div class="header-title">
+        <span class="emoji-big">🎱</span>
+        <div>
+          <h1>Les Schtroumpfs à Vegas!</h1>
+          <p class="subtitle">CPA League Champions — Las Vegas · Aug 9–16, 2026</p>
+        </div>
+      </div>
+      <div class="translate-bar">
+        <a href="https://translate.google.com/translate?hl=fr&sl=en&tl=fr&u=https%3A%2F%2Fchrisribe.github.io%2Fvegas-2026%2Fmap.html"
+           target="_blank" class="translate-btn">🌐 Traduire en Français</a>
+      </div>
+    </div>
+        <nav id="main-nav"></nav>
     <script src="nav.js"></script>
-66|  </header>
-67|
-68|  <section>
-69|    <span class="section-label">Know where to go</span>
-70|    <h2>🗺️ Vegas Map — All Spots Pinned</h2>
-71|    <p style="color:var(--text-muted); margin-bottom:16px;">Tap any pin for details. Your home base is SAHARA Hotel (⭐ star pin, north strip).</p>
-72|
-73|    <!-- OFFLINE TIP -->
-74|    <div style="background:rgba(40,167,69,0.1); border:1px solid #28a745; border-radius:10px; padding:12px 16px; margin-bottom:16px; font-size:0.88rem; color:#28a745;">
-75|      📶 <strong>Works offline!</strong> Browse this page once on WiFi at the hotel — all pages and map tiles you've viewed get saved to your phone automatically. No data needed after that!
-76|    </div>
-77|
-78|    <!-- LEGEND -->
-79|    <div class="legend">
-80|      <div class="legend-item"><div class="legend-dot" style="background:#f0c040;"></div> Our Hotels</div>
-81|      <div class="legend-item"><div class="legend-dot" style="background:#28a745;"></div> Cheap Eats (under $10)</div>
-82|      <div class="legend-item"><div class="legend-dot" style="background:#e94560;"></div> Buffets</div>
-83|      <div class="legend-item"><div class="legend-dot" style="background:#4fc3f7;"></div> Casinos / Attractions</div>
-84|      <div class="legend-item"><div class="legend-dot" style="background:#ff9800;"></div> Essentials (CVS etc.)</div>
-85|    </div>
-86|
-87|    <div id="map"></div>
-88|
-89|    <p style="color:var(--text-muted); font-size:0.82rem; margin-top:10px; margin-bottom:36px;">
-90|      💡 Tap a pin to see details. Pinch to zoom on mobile.
-91|    </p>
-92|
-93|    <!-- TRANSPORT CHEAT SHEET -->
-94|    <div style="background:rgba(240,192,64,0.08); border:2px solid var(--gold); border-radius:12px; padding:20px; margin-top:16px;">
-95|      <h3 style="color:var(--gold); margin-bottom:14px;">🚌 Getting Around — Quick Cheat Sheet</h3>
-96|      <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap:14px;">
-97|        <div>
-98|          <strong style="color:var(--text); display:block; margin-bottom:6px;">🆓 Free</strong>
-99|          <ul style="color:var(--text-muted); list-style:none; display:grid; gap:4px; font-size:0.88rem;">
-100|            <li>🚌 Downtown Loop Shuttle → Strat</li>
-101|            <li>🚃 Tram: Bellagio → Park MGM</li>
-102|            <li>🚃 Tram: Excalibur → Mandalay Bay</li>
-103|          </ul>
-104|        </div>
-105|        <div>
-106|          <strong style="color:var(--text); display:block; margin-bottom:6px;">💵 Cheap</strong>
-107|          <ul style="color:var(--text-muted); list-style:none; display:grid; gap:4px; font-size:0.88rem;">
-108|            <li>🚇 Monorail: $5/ride or $8/day</li>
-109|            <li>🚌 Deuce Bus: $8/day · $20/3-day</li>
-110|          </ul>
-111|        </div>
-112|        <div>
-113|          <strong style="color:var(--text); display:block; margin-bottom:6px;">🚕 Ride-Share / Taxi</strong>
-114|          <ul style="color:var(--text-muted); list-style:none; display:grid; gap:4px; font-size:0.88rem;">
-115|            <li>✅ Always compare Uber vs Lyft</li>
-116|            <li>✅ Taxi flat rate: $19–27 from airport</li>
-117|            <li>⚠️ Bring cash — cabs charge card fee</li>
-118|          </ul>
-119|        </div>
-120|      </div>
-121|    </div>
-122|  </section>
-123|
-124|  <footer>
-125|    <p>🎱 Les Schtroumpfs – CPA League Champions 2026 | Las Vegas, Aug 9–16</p>
-126|    <p><small>Info sourced from YouTube research playlist. Prices may vary — always verify on-site.</small></p>
-127|  </footer>
-128|
-129|  <script src="leaflet.js"></script>
-130|  <script>
-131|    // ── Map init centred roughly on mid-Strip ──
-132|    const map = L.map('map').setView([36.1147, -115.172], 14);
-133|
-134|    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-135|      attribution: '© OpenStreetMap contributors',
-136|      maxZoom: 19
-137|    }).addTo(map);
-138|
-139|    // ── Custom circle marker factory ──
-140|    function pin(color) {
-141|      return L.divIcon({
-142|        className: '',
-143|        html: `<div style="
-144|          width:16px; height:16px; border-radius:50%;
-145|          background:${color}; border:2px solid rgba(255,255,255,0.8);
-146|          box-shadow:0 2px 6px rgba(0,0,0,0.5);">
-147|        </div>`,
-148|        iconSize: [16, 16],
-149|        iconAnchor: [8, 8],
-150|        popupAnchor: [0, -10]
-151|      });
-152|    }
-153|
-154|    function starPin(color) {
-155|      return L.divIcon({
-156|        className: '',
-157|        html: `<div style="font-size:26px; line-height:1; text-shadow:0 2px 6px rgba(0,0,0,0.7);">⭐</div>`,
-158|        iconSize: [26, 26],
-159|        iconAnchor: [13, 13],
-160|        popupAnchor: [0, -14]
-161|      });
-162|    }
-163|
-164|    // ── Helper ──
-165|    function mark(lat, lng, icon, html) {
-166|      L.marker([lat, lng], { icon }).addTo(map).bindPopup(html);
-167|    }
-168|
-169|    // ══════════════════════════════
-170|    // 🏨  OUR HOTELS  (gold star)
-171|    // ══════════════════════════════
-172|    mark(36.1462, -115.1558, starPin(), `
-173|      <b>⭐ SAHARA Las Vegas</b><br/>
-174|      Your home base! North Strip<br/>
-175|      🆓 Free parking &amp; free valet<br/>
-176|      🍝 Bala prix fixe $50 (3 courses)<br/>
-177|      🍹 Casbar Lounge happy hours 3–5pm &amp; 8–9pm<br/>
-178|      🚇 Monorail station on-site
-179|    `);
-180|
-181|    mark(36.1347, -115.1530, starPin(), `
-182|      <b>⭐ Westgate Las Vegas</b><br/>
-183|      Some teammates staying here<br/>
-184|      Near the Convention Center
-185|    `);
-186|
-187|    // ══════════════════════════════
-188|    // 🍔  CHEAP EATS  (green)
-189|    // ══════════════════════════════
-190|
-191|    // Miracle Mile / Planet Hollywood
-192|    mark(36.1126, -115.1718, pin('#28a745'), `
-193|      <b>🍔 Ketchup Burger</b><br/>
-194|      Miracle Mile, Planet Hollywood<br/>
-195|      <span class="price">½ lb burger + fries $6</span><br/>
-196|      Add a Bud Light → $9 total 🍺
-197|    `);
-198|    mark(36.1126, -115.1715, pin('#28a745'), `
-199|      <b>🌮 Tacoitarian</b><br/>
-200|      Miracle Mile, Planet Hollywood<br/>
-201|      <span class="price">Plant-based tacos $3.99 each</span><br/>
-202|      Free water included 💧
-203|    `);
-204|    mark(36.1127, -115.1712, pin('#28a745'), `
-205|      <b>🍗 Dave's Hot Chicken</b><br/>
-206|      Miracle Mile, Planet Hollywood<br/>
-207|      <span class="price">Single tendee $5.77 · Slider $7.87</span><br/>
-208|      ⚠️ Order light mild if unsure — hot IS hot!
-209|    `);
-210|    mark(36.1128, -115.1710, pin('#28a745'), `
-211|      <b>🥪 Earl of Sandwich</b><br/>
-212|      Miracle Mile, Planet Hollywood<br/>
-213|      <span class="price">Sandwich $9.99 · Kids meal $6</span><br/>
-214|      Classic toasted sandwiches
-215|    `);
-216|
-217|    // Downtown
-218|    mark(36.1717, -115.1426, pin('#28a745'), `
-219|      <b>🌭 Nathan's Hot Dogs</b><br/>
-220|      Downtown Grand, Fremont<br/>
-221|      <span class="price">Hot dog + PBR ~$3–4 🍺</span><br/>
-222|      Taco $2 · Taco + beer $3<br/>
-223|      Best value deal in all of Vegas!
-224|    `);
-225|    mark(36.1688, -115.1413, pin('#28a745'), `
-226|      <b>🍕 Evil Pie</b><br/>
-227|      Downtown, near Fremont St<br/>
-228|      <span class="price">Pizza slice + craft beer $8</span><br/>
-229|      Prices never go up — rare in Vegas!
-230|    `);
-231|    mark(36.1688, -115.1411, pin('#28a745'), `
-232|      <b>🍦 Sorry Not Sorry Creamery</b><br/>
-233|      Downtown (across from Evil Pie)<br/>
-234|      <span class="price">1 scoop $5.95 · 2 scoops $7.95</span><br/>
-235|      Unique flavors — try ube &amp; honeycomb!
-236|    `);
-237|    mark(36.1706, -115.1443, pin('#28a745'), `
-238|      <b>🍩 Pink Box Donuts</b><br/>
-239|      The Plaza, Downtown<br/>
-240|      Las Vegas donut staple 🍩
-241|    `);
-242|    mark(36.1683, -115.1430, pin('#28a745'), `
-243|      <b>🥩 El Cortez Hotel</b><br/>
-244|      Downtown Fremont<br/>
-245|      <span class="price">Prime Rib Special $19.95</span><br/>
-246|      Rib + potato + vegetable — classic Vegas!
-247|    `);
-248|
-249|    // Strip
-250|    mark(36.1162, -115.1736, pin('#28a745'), `
-251|      <b>🌭 Casino Royale</b><br/>
-252|      Mid-Strip (near Flamingo)<br/>
-253|      <span class="price">Foot-long hot dog $3.50</span><br/>
-254|      No resort fees at this casino either!
-255|    `);
-256|    mark(36.1167, -115.1705, pin('#28a745'), `
-257|      <b>🌭 Stage Door Bar</b><br/>
-258|      By the Flamingo<br/>
-259|      <span class="price">Bud Light + hot dog ~$3</span><br/>
-260|      Classic Vegas dive bar 🎰
-261|    `);
-262|
-263|    // ══════════════════════════════
-264|    // 🦞  BUFFETS  (red)
-265|    // ══════════════════════════════
-266|    mark(36.1412, -115.1643, pin('#e94560'), `
-267|      <b>🦞 Wynn Buffet ⭐ #1</b><br/>
-268|      Wynn Hotel — walking from SAHARA!<br/>
-269|      <span class="price">Brunch $59.99 · Dinner $79.99</span><br/>
-270|      Small-batch cooking = best quality<br/>
-271|      Lobster, crab, Wagyu, caviar daily!
-272|    `);
-273|    mark(36.1164, -115.1749, pin('#e94560'), `
-274|      <b>🦞 Bakanal Buffet #2</b><br/>
-275|      Caesar's Palace<br/>
-276|      <span class="price">Dinner $86.99–$91.99</span><br/>
-277|      Largest buffet in Vegas — 250+ items!<br/>
-278|      ⚠️ 90-min time limit
-279|    `);
-280|    mark(36.0896, -115.1522, pin('#e94560'), `
-281|      <b>🦞 Ace Buffet (Palms) #4</b><br/>
-282|      Palms Hotel — off Strip west<br/>
-283|      <span class="price">Lobster Night (Wed/Thu) $79.99</span><br/>
-284|      🦞 ALL YOU CAN EAT whole lobsters!<br/>
-285|      Reserve in advance!
-286|    `);
-287|    mark(36.0267, -115.1606, pin('#e94560'), `
-288|      <b>🥗 Garden Buffet #5 — Best Value!</b><br/>
-289|      South Point Hotel — south of Strip<br/>
-290|      <span class="price">Breakfast $19.95 · Dinner $37.95</span><br/>
-291|      🍹 FREE drinks included at select meals!<br/>
-292|      Get a free player card to save $3–5
-293|    `);
-294|
-295|    // ══════════════════════════════
-296|    // 🎰  CASINOS / ATTRACTIONS  (blue)
-297|    // ══════════════════════════════
-298|    mark(36.1125, -115.1767, pin('#4fc3f7'), `
-299|      <b>🎰 Bellagio</b><br/>
-300|      Center Strip<br/>
-301|      Iconic fountains &amp; conservatory (FREE)<br/>
-302|      Best pool in Vegas (free chairs — go early!)<br/>
-303|      Tram to Park MGM from here
-304|    `);
-305|    mark(36.1210, -115.1686, pin('#4fc3f7'), `
-306|      <b>🎰 Venetian / Palazzo</b><br/>
-307|      Mid-Strip<br/>
-308|      Via Vittorio Food Hall inside<br/>
-309|      Great casino — huge slot selection
-310|    `);
-311|    mark(36.1697, -115.1566, pin('#4fc3f7'), `
-312|      <b>🎵 Fremont Street Experience</b><br/>
-313|      Downtown Las Vegas<br/>
-314|      3 FREE concert stages every night!<br/>
-315|      No cover, no tickets — just show up 🎶
-316|    `);
-317|
-318|    // ══════════════════════════════
-319|    // 🛒  ESSENTIALS  (orange)
-320|    // ══════════════════════════════
-321|    mark(36.1140, -115.1724, pin('#ff9800'), `
-322|      <b>🛒 Walgreens (Center Strip)</b><br/>
-323|      Near Bally's / Paris area<br/>
-324|      <span class="price">Beer $3.99 vs $16.99 in casino!</span><br/>
-325|      Stock up on water, snacks, sunscreen 🧴
-326|    `);
-327|    mark(36.1456, -115.1591, pin('#ff9800'), `
-328|      <b>🛒 CVS (Near SAHARA)</b><br/>
-329|      North Strip area<br/>
-330|      Closest essentials store to your hotel<br/>
-331|      Load up the mini fridge here!
-332|    `);
-333|  </script>
-334|
-335|  <script>
-336|    if ('serviceWorker' in navigator) {
-337|      window.addEventListener('load', () => navigator.serviceWorker.register('./sw.js', { updateViaCache: 'none' }));
-338|    }
-339|  </script>
-340|</body>
-341|</html>
-342|
+  </header>
+
+  <section>
+    <span class="section-label">Know where to go</span>
+    <h2>🗺️ Vegas Map — All Spots Pinned</h2>
+    <p style="color:var(--text-muted); margin-bottom:16px;">Tap any pin for details. Your home base is SAHARA Hotel (⭐ star pin, north strip).</p>
+
+    <!-- OFFLINE TIP -->
+    <div style="background:rgba(40,167,69,0.1); border:1px solid #28a745; border-radius:10px; padding:12px 16px; margin-bottom:16px; font-size:0.88rem; color:#28a745;">
+      📶 <strong>Works offline!</strong> Browse this page once on WiFi at the hotel — all pages and map tiles you've viewed get saved to your phone automatically. No data needed after that!
+    </div>
+
+    <!-- LEGEND -->
+    <div class="legend">
+      <div class="legend-item"><div class="legend-dot" style="background:#f0c040;"></div> Our Hotels</div>
+      <div class="legend-item"><div class="legend-dot" style="background:#28a745;"></div> Cheap Eats (under $10)</div>
+      <div class="legend-item"><div class="legend-dot" style="background:#e94560;"></div> Buffets</div>
+      <div class="legend-item"><div class="legend-dot" style="background:#4fc3f7;"></div> Casinos / Attractions</div>
+      <div class="legend-item"><div class="legend-dot" style="background:#ff9800;"></div> Essentials (CVS etc.)</div>
+    </div>
+
+    <div id="map"></div>
+
+    <p style="color:var(--text-muted); font-size:0.82rem; margin-top:10px; margin-bottom:36px;">
+      💡 Tap a pin to see details. Pinch to zoom on mobile.
+    </p>
+
+    <!-- TRANSPORT CHEAT SHEET -->
+    <div style="background:rgba(240,192,64,0.08); border:2px solid var(--gold); border-radius:12px; padding:20px; margin-top:16px;">
+      <h3 style="color:var(--gold); margin-bottom:14px;">🚌 Getting Around — Quick Cheat Sheet</h3>
+      <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap:14px;">
+        <div>
+          <strong style="color:var(--text); display:block; margin-bottom:6px;">🆓 Free</strong>
+          <ul style="color:var(--text-muted); list-style:none; display:grid; gap:4px; font-size:0.88rem;">
+            <li>🚌 Downtown Loop Shuttle → Strat</li>
+            <li>🚃 Tram: Bellagio → Park MGM</li>
+            <li>🚃 Tram: Excalibur → Mandalay Bay</li>
+          </ul>
+        </div>
+        <div>
+          <strong style="color:var(--text); display:block; margin-bottom:6px;">💵 Cheap</strong>
+          <ul style="color:var(--text-muted); list-style:none; display:grid; gap:4px; font-size:0.88rem;">
+            <li>🚇 Monorail: $5/ride or $8/day</li>
+            <li>🚌 Deuce Bus: $8/day · $20/3-day</li>
+          </ul>
+        </div>
+        <div>
+          <strong style="color:var(--text); display:block; margin-bottom:6px;">🚕 Ride-Share / Taxi</strong>
+          <ul style="color:var(--text-muted); list-style:none; display:grid; gap:4px; font-size:0.88rem;">
+            <li>✅ Always compare Uber vs Lyft</li>
+            <li>✅ Taxi flat rate: $19–27 from airport</li>
+            <li>⚠️ Bring cash — cabs charge card fee</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <p>🎱 Les Schtroumpfs – CPA League Champions 2026 | Las Vegas, Aug 9–16</p>
+    <p><small>Info sourced from YouTube research playlist. Prices may vary — always verify on-site.</small></p>
+  </footer>
+
+  <script src="leaflet.js"></script>
+  <script>
+    // ── Map init centred roughly on mid-Strip ──
+    const map = L.map('map').setView([36.1147, -115.172], 14);
+
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      attribution: '© OpenStreetMap contributors',
+      maxZoom: 19
+    }).addTo(map);
+
+    // ── Custom circle marker factory ──
+    function pin(color) {
+      return L.divIcon({
+        className: '',
+        html: `<div style="
+          width:16px; height:16px; border-radius:50%;
+          background:${color}; border:2px solid rgba(255,255,255,0.8);
+          box-shadow:0 2px 6px rgba(0,0,0,0.5);">
+        </div>`,
+        iconSize: [16, 16],
+        iconAnchor: [8, 8],
+        popupAnchor: [0, -10]
+      });
+    }
+
+    function starPin(color) {
+      return L.divIcon({
+        className: '',
+        html: `<div style="font-size:26px; line-height:1; text-shadow:0 2px 6px rgba(0,0,0,0.7);">⭐</div>`,
+        iconSize: [26, 26],
+        iconAnchor: [13, 13],
+        popupAnchor: [0, -14]
+      });
+    }
+
+    // ── Helper ──
+    function mark(lat, lng, icon, html) {
+      L.marker([lat, lng], { icon }).addTo(map).bindPopup(html);
+    }
+
+    // ══════════════════════════════
+    // 🏨  OUR HOTELS  (gold star)
+    // ══════════════════════════════
+    mark(36.1462, -115.1558, starPin(), `
+      <b>⭐ SAHARA Las Vegas</b><br/>
+      Your home base! North Strip<br/>
+      🆓 Free parking &amp; free valet<br/>
+      🍝 Bala prix fixe $50 (3 courses)<br/>
+      🍹 Casbar Lounge happy hours 3–5pm &amp; 8–9pm<br/>
+      🚇 Monorail station on-site
+    `);
+
+    mark(36.1347, -115.1530, starPin(), `
+      <b>⭐ Westgate Las Vegas</b><br/>
+      Some teammates staying here<br/>
+      Near the Convention Center
+    `);
+
+    // ══════════════════════════════
+    // 🍔  CHEAP EATS  (green)
+    // ══════════════════════════════
+
+    // Miracle Mile / Planet Hollywood
+    mark(36.1126, -115.1718, pin('#28a745'), `
+      <b>🍔 Ketchup Burger</b><br/>
+      Miracle Mile, Planet Hollywood<br/>
+      <span class="price">½ lb burger + fries $6</span><br/>
+      Add a Bud Light → $9 total 🍺
+    `);
+    mark(36.1126, -115.1715, pin('#28a745'), `
+      <b>🌮 Tacoitarian</b><br/>
+      Miracle Mile, Planet Hollywood<br/>
+      <span class="price">Plant-based tacos $3.99 each</span><br/>
+      Free water included 💧
+    `);
+    mark(36.1127, -115.1712, pin('#28a745'), `
+      <b>🍗 Dave's Hot Chicken</b><br/>
+      Miracle Mile, Planet Hollywood<br/>
+      <span class="price">Single tendee $5.77 · Slider $7.87</span><br/>
+      ⚠️ Order light mild if unsure — hot IS hot!
+    `);
+    mark(36.1128, -115.1710, pin('#28a745'), `
+      <b>🥪 Earl of Sandwich</b><br/>
+      Miracle Mile, Planet Hollywood<br/>
+      <span class="price">Sandwich $9.99 · Kids meal $6</span><br/>
+      Classic toasted sandwiches
+    `);
+
+    // Downtown
+    mark(36.1717, -115.1426, pin('#28a745'), `
+      <b>🌭 Nathan's Hot Dogs</b><br/>
+      Downtown Grand, Fremont<br/>
+      <span class="price">Hot dog + PBR ~$3–4 🍺</span><br/>
+      Taco $2 · Taco + beer $3<br/>
+      Best value deal in all of Vegas!
+    `);
+    mark(36.1688, -115.1413, pin('#28a745'), `
+      <b>🍕 Evil Pie</b><br/>
+      Downtown, near Fremont St<br/>
+      <span class="price">Pizza slice + craft beer $8</span><br/>
+      Prices never go up — rare in Vegas!
+    `);
+    mark(36.1688, -115.1411, pin('#28a745'), `
+      <b>🍦 Sorry Not Sorry Creamery</b><br/>
+      Downtown (across from Evil Pie)<br/>
+      <span class="price">1 scoop $5.95 · 2 scoops $7.95</span><br/>
+      Unique flavors — try ube &amp; honeycomb!
+    `);
+    mark(36.1706, -115.1443, pin('#28a745'), `
+      <b>🍩 Pink Box Donuts</b><br/>
+      The Plaza, Downtown<br/>
+      Las Vegas donut staple 🍩
+    `);
+    mark(36.1683, -115.1430, pin('#28a745'), `
+      <b>🥩 El Cortez Hotel</b><br/>
+      Downtown Fremont<br/>
+      <span class="price">Prime Rib Special $19.95</span><br/>
+      Rib + potato + vegetable — classic Vegas!
+    `);
+
+    // Strip
+    mark(36.1162, -115.1736, pin('#28a745'), `
+      <b>🌭 Casino Royale</b><br/>
+      Mid-Strip (near Flamingo)<br/>
+      <span class="price">Foot-long hot dog $3.50</span><br/>
+      No resort fees at this casino either!
+    `);
+    mark(36.1167, -115.1705, pin('#28a745'), `
+      <b>🌭 Stage Door Bar</b><br/>
+      By the Flamingo<br/>
+      <span class="price">Bud Light + hot dog ~$3</span><br/>
+      Classic Vegas dive bar 🎰
+    `);
+
+    // ══════════════════════════════
+    // 🦞  BUFFETS  (red)
+    // ══════════════════════════════
+    mark(36.1412, -115.1643, pin('#e94560'), `
+      <b>🦞 Wynn Buffet ⭐ #1</b><br/>
+      Wynn Hotel — walking from SAHARA!<br/>
+      <span class="price">Brunch $59.99 · Dinner $79.99</span><br/>
+      Small-batch cooking = best quality<br/>
+      Lobster, crab, Wagyu, caviar daily!
+    `);
+    mark(36.1164, -115.1749, pin('#e94560'), `
+      <b>🦞 Bakanal Buffet #2</b><br/>
+      Caesar's Palace<br/>
+      <span class="price">Dinner $86.99–$91.99</span><br/>
+      Largest buffet in Vegas — 250+ items!<br/>
+      ⚠️ 90-min time limit
+    `);
+    mark(36.0896, -115.1522, pin('#e94560'), `
+      <b>🦞 Ace Buffet (Palms) #4</b><br/>
+      Palms Hotel — off Strip west<br/>
+      <span class="price">Lobster Night (Wed/Thu) $79.99</span><br/>
+      🦞 ALL YOU CAN EAT whole lobsters!<br/>
+      Reserve in advance!
+    `);
+    mark(36.0267, -115.1606, pin('#e94560'), `
+      <b>🥗 Garden Buffet #5 — Best Value!</b><br/>
+      South Point Hotel — south of Strip<br/>
+      <span class="price">Breakfast $19.95 · Dinner $37.95</span><br/>
+      🍹 FREE drinks included at select meals!<br/>
+      Get a free player card to save $3–5
+    `);
+
+    // ══════════════════════════════
+    // 🎰  CASINOS / ATTRACTIONS  (blue)
+    // ══════════════════════════════
+    mark(36.1125, -115.1767, pin('#4fc3f7'), `
+      <b>🎰 Bellagio</b><br/>
+      Center Strip<br/>
+      Iconic fountains &amp; conservatory (FREE)<br/>
+      Best pool in Vegas (free chairs — go early!)<br/>
+      Tram to Park MGM from here
+    `);
+    mark(36.1210, -115.1686, pin('#4fc3f7'), `
+      <b>🎰 Venetian / Palazzo</b><br/>
+      Mid-Strip<br/>
+      Via Vittorio Food Hall inside<br/>
+      Great casino — huge slot selection
+    `);
+    mark(36.1697, -115.1566, pin('#4fc3f7'), `
+      <b>🎵 Fremont Street Experience</b><br/>
+      Downtown Las Vegas<br/>
+      3 FREE concert stages every night!<br/>
+      No cover, no tickets — just show up 🎶
+    `);
+
+    // ══════════════════════════════
+    // 🛒  ESSENTIALS  (orange)
+    // ══════════════════════════════
+    mark(36.1140, -115.1724, pin('#ff9800'), `
+      <b>🛒 Walgreens (Center Strip)</b><br/>
+      Near Bally's / Paris area<br/>
+      <span class="price">Beer $3.99 vs $16.99 in casino!</span><br/>
+      Stock up on water, snacks, sunscreen 🧴
+    `);
+    mark(36.1456, -115.1591, pin('#ff9800'), `
+      <b>🛒 CVS (Near SAHARA)</b><br/>
+      North Strip area<br/>
+      Closest essentials store to your hotel<br/>
+      Load up the mini fridge here!
+    `);
+  </script>
+
+  <script>
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => navigator.serviceWorker.register('./sw.js', { updateViaCache: 'none' }));
+    }
+  </script>
+</body>
+</html>

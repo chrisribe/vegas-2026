@@ -14,6 +14,28 @@
     // Hide Notes header
     headers[notesIdx].classList.add('col-notes');
 
+    // Break multi-price cells (e.g. "$5 · $7") into min–max range on mobile
+    table.querySelectorAll('tbody tr').forEach(function (row) {
+      var cells = row.querySelectorAll('td');
+      if (cells.length >= 3) {
+        var priceCol = cells[notesIdx - 1];
+        var raw = priceCol.textContent.trim();
+        // Only reformat if multiple prices exist (contains ·)
+        if (raw.indexOf('·') !== -1) {
+          var nums = [];
+          var matches = raw.match(/\d+(?:\.\d+)?/g);
+          if (matches) matches.forEach(function(n) { nums.push(parseFloat(n)); });
+          if (nums.length >= 2) {
+            var mn = Math.min.apply(null, nums);
+            var mx = Math.max.apply(null, nums);
+            // Round to whole dollars if no cents
+            var fmt = function(n) { return n % 1 === 0 ? '$' + n : '$' + n.toFixed(2); };
+            priceCol.textContent = mn === mx ? fmt(mn) : fmt(mn) + '–' + mx + '$';
+          }
+        }
+      }
+    });
+
     // Process each body row
     table.querySelectorAll('tbody tr').forEach(function (row) {
       var cells = row.querySelectorAll('td');
@@ -26,8 +48,8 @@
       // Hide the Notes cell
       noteCell.classList.add('col-notes');
 
-      // Add 💡 toggle button to the Price cell (one before Notes)
-      var priceCell = cells[notesIdx - 1];
+      // Add 💡 toggle button to the Restaurant cell (col 0 — always visible, never clipped)
+      var priceCell = cells[0];
       var btn = document.createElement('button');
       btn.className = 'note-toggle-btn';
       btn.innerHTML = ' 💡';

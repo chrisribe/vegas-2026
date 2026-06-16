@@ -326,11 +326,11 @@ footer {
   border-radius: 6px;
   color: var(--gold);
   cursor: pointer;
-  font-size: 0.8rem;
-  padding: 2px 6px;
-  margin-left: 6px;
-  vertical-align: middle;
-  white-space: nowrap;
+  font-size: 0.75rem;
+  padding: 2px 5px;
+  margin-top: 5px;
+  display: block;
+  width: fit-content;
 }
 
 .note-expand-row { display: none; }
@@ -375,8 +375,12 @@ footer {
     margin-right: -14px;
     padding: 0 14px;
   }
-  table { font-size: 0.82rem; min-width: unset; width: 100%; }
+  table { font-size: 0.82rem; min-width: unset; width: 100%; table-layout: fixed; }
   .col-notes { display: none; }
+  /* Fixed col widths: Restaurant ~30%, Price ~22%, Item takes remainder */
+  table th:nth-child(1), table td:nth-child(1) { width: 30%; word-break: break-word; }
+  table th:nth-child(2), table td:nth-child(2) { width: auto; word-break: break-word; }
+  table th:nth-child(3), table td:nth-child(3) { width: 22%; word-break: break-word; }
   th, td { padding: 8px 10px; }
 
   /* Map */

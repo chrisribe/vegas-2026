@@ -25,14 +25,14 @@
     /* ── Transport grid ── */
     .tgrid {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
+      grid-template-columns: repeat(12, minmax(0, 1fr));
       gap: 16px;
       margin-bottom: 36px;
+      align-items: stretch;
     }
-    @media (max-width: 900px) { .tgrid { grid-template-columns: repeat(2, 1fr); } }
-    @media (max-width: 560px) { .tgrid { grid-template-columns: 1fr; } }
 
     .tcard {
+      grid-column: span 4;
       background: var(--card-bg);
       border: 1px solid rgba(255,255,255,0.08);
       border-radius: 12px;
@@ -45,8 +45,17 @@
       border-color: var(--gold);
       box-shadow: 0 0 14px rgba(240,192,64,0.15);
     }
-    .tcard.span2 { grid-column: span 2; }
-    @media (max-width: 900px) { .tcard.span2 { grid-column: span 1; } }
+    .tcard.span2 { grid-column: span 12; }
+
+    @media (max-width: 1100px) {
+      .tcard { grid-column: span 6; }
+      .tcard.span2 { grid-column: span 12; }
+    }
+    @media (max-width: 900px) {
+      .tgrid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .tcard, .tcard.span2 { grid-column: span 1; }
+    }
+    @media (max-width: 560px) { .tgrid { grid-template-columns: 1fr; } }
 
     .tcard-top {
       display: flex;

@@ -1,4 +1,4 @@
-const CACHE = 'vegas2026-v10';
+const CACHE = 'vegas2026-v11';
 const ASSETS = [
   './',
   './index.html',

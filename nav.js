@@ -5,8 +5,9 @@
     { href: 'cheap-eats.html', label: '🍽️ Cheap Eats' },
     { href: 'buffets.html',    label: '🦞 Buffets' },
     { href: 'off-strip.html',  label: '🏙️ Off-Strip' },
-    { href: 'tournament.html', label: '🎱 Tournament' },
-    { href: 'transport.html',  label: '🚇 Transport' },
+    { href: 'tournament.html',  label: '🎱 Tournament' },
+    { href: 'scorekeeping.html', label: '📝 Scorekeeping' },
+    { href: 'transport.html',   label: '🚇 Transport' },
     { href: 'tips.html',       label: '💡 Tips' },
     { href: 'map.html',        label: '🗺️ Map' },
   ];

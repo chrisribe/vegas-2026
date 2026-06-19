@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <link rel="manifest" href="manifest.json" />
+  <meta name="theme-color" content="#f0c040" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <link rel="apple-touch-icon" href="icons/icon-192.png" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>📝 Scorekeeping – Vegas 2026</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <div class="header-inner">
+      <div class="header-title">
+        <span class="emoji-big">🎱</span>
+        <div>
+          <h1>Les Schtroumpfs à Vegas!</h1>
+          <p class="subtitle">CPA League Champions — Las Vegas · Aug 9–16, 2026</p>
+        </div>
+      </div>
+      <div class="translate-bar">
+        <a href="https://translate.google.com/translate?hl=fr&sl=en&tl=fr&u=https%3A%2F%2Fchrisribe.github.io%2Fvegas-2026%2Fscorekeeping.html"
+           target="_blank" class="translate-btn">🌐 Traduire en Français</a>
+      </div>
+    </div>
+    <div class="nav-scroll-wrap"><nav id="main-nav"></nav></div>
+    <script src="nav.js"></script>
+  </header>
+
+  <section>
+    <span class="section-label">Official APA Manual Notes</span>
+    <h2>📝 Match Night Scorekeeping Cheat Sheet (1 Page)</h2>
+    <p style="color:var(--text-muted); margin-bottom:24px;">
+      Built from official APA Team Manual pages for 8-Ball, 9-Ball, and Defensive Shots.
+      Use this before every match so your sheet is clean and accurate.
+    </p>
+
+    <div style="background:rgba(240,192,64,0.08); border:2px solid var(--gold); border-radius:12px; padding:18px 20px; margin-bottom:24px;">
+      <strong style="color:var(--gold);">✅ Captain Huddle (30 seconds before lag)</strong>
+      <ul style="margin:10px 0 0 18px; color:var(--text-muted); display:grid; gap:6px;">
+        <li>Who is top/bottom on our sheet? (lag winner is top)</li>
+        <li>Who is marking innings + DS this match?</li>
+        <li>Say it out loud: <strong style="color:var(--text)">"Complete innings only"</strong></li>
+        <li>Say it out loud: <strong style="color:var(--text)">"Mark defensive intent, not outcome"</strong></li>
+      </ul>
+    </div>
+
+    <h3 style="color:var(--gold); margin-bottom:12px;">🎯 The Two Rules That Prevent Most Errors</h3>
+    <div class="tips-grid" style="margin-bottom:24px;">
+      <div class="tip-item">
+        <div class="tip-num">1</div>
+        <div class="tip-content">
+          <strong>Inning rule</strong>
+          <p>An inning is not complete until the player/team listed on the <strong>bottom</strong> (lost lag) misses or fouls.</p>
+        </div>
+      </div>
+      <div class="tip-item">
+        <div class="tip-num">2</div>
+        <div class="tip-content">
+          <strong>Defensive Shot (DS) rule</strong>
+          <p>DS is based on <strong>intent</strong> (no intent to legally pocket). If no DS happened, write <strong>"No DS"</strong>.</p>
+        </div>
+      </div>
+    </div>
+
+    <h3 style="color:var(--gold); margin-bottom:12px;">🎱 8-Ball: Exactly What to Mark</h3>
+    <div class="table-wrap" style="margin-bottom:22px;">
+      <table>
+        <thead><tr><th>Step</th><th>What to Fill</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Before break</strong></td><td>Lag winner on top. Team #, player #, last name + initial. Fill race (games must win).</td></tr>
+          <tr><td><strong>Every rack</strong></td><td>In game block: innings tallies (complete only), winner block, E8/8S/8WP/8OB/BR, timeouts (T).</td></tr>
+          <tr><td><strong>DS tracking</strong></td><td>Tally DS in DS block all match. At end: total + circle. If none: write <strong>No DS</strong>.</td></tr>
+          <tr><td><strong>End of match</strong></td><td>Total innings, games won, match points earned, running total, captain signatures.</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3 style="color:var(--gold); margin-bottom:12px;">9️⃣ 9-Ball: Exactly What to Mark</h3>
+    <div class="table-wrap" style="margin-bottom:22px;">
+      <table>
+        <thead><tr><th>Step</th><th>What to Fill</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Before break</strong></td><td>Lag winner on top. Fill team/player info + skill levels + points required to win.</td></tr>
+          <tr><td><strong>During rack</strong></td><td>Cross out points as balls are made (1–8 = 1 pt, 9 = 2 pts). Record rack-end score lines.</td></tr>
+          <tr><td><strong>Rack close check</strong></td><td>Top points + bottom points + dead balls should total <strong>10</strong>.</td></tr>
+          <tr><td><strong>Innings / dead balls</strong></td><td>Mark complete innings only. Record dead balls; <strong>9-ball is never dead</strong> (spotted).</td></tr>
+          <tr><td><strong>End of match</strong></td><td>Total innings, DS total (or No DS), total points, match points, running total, signatures.</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3 style="color:var(--gold); margin-bottom:12px;">🛡️ Defensive Shots Quick Calls</h3>
+    <div class="tips-grid" style="margin-bottom:24px;">
+      <div class="tip-item">
+        <div class="tip-num">DS</div>
+        <div class="tip-content">
+          <strong>Mark DS</strong>
+          <p>Safety attempts, legal contact only, intentional foul to improve layout, or clear no-pocket intent.</p>
+        </div>
+      </div>
+      <div class="tip-item">
+        <div class="tip-num">NO</div>
+        <div class="tip-content">
+          <strong>Don’t auto-mark DS</strong>
+          <p>Two-way shots (real pocket attempt + defensive leave) are not automatically DS. Judge true intent.</p>
+        </div>
+      </div>
+      <div class="tip-item">
+        <div class="tip-num">⚠️</div>
+        <div class="tip-content">
+          <strong>Important</strong>
+          <p>Even if a defensive attempt legally pockets a ball, shooter continues and shot can still be marked DS.</p>
+        </div>
+      </div>
+    </div>
+
+    <h3 style="color:var(--gold); margin-bottom:12px;">🚫 Common Mistakes to Avoid</h3>
+    <ul style="color:var(--text-muted); display:grid; gap:8px; margin-left:18px; margin-bottom:28px;">
+      <li>Negotiating innings with opponent scorekeeper.</li>
+      <li>Forgetting to write <strong>No DS</strong> when no defensive shots occurred.</li>
+      <li>Marking innings too early (before bottom player misses/fouls).</li>
+      <li>Missing special 8-ball marks: E8, 8S, 8WP, 8OB, BR.</li>
+      <li>Not doing a quick rack-end point reconciliation in 9-ball.</li>
+    </ul>
+
+    <div style="background:rgba(40,167,69,0.08); border:1px solid #28a745; border-radius:12px; padding:16px 18px; margin-bottom:18px;">
+      <strong style="color:#28a745;">Official references</strong>
+      <p style="color:var(--text-muted); margin-top:8px;">
+        Team Manual PDF: <a href="http://media.poolplayers.com/TMRB/Team-Manual-English.pdf" target="_blank" rel="noopener" style="color:var(--gold);">Team-Manual-English.pdf</a><br/>
+        8-Ball scorekeeping: <a href="https://rules.poolplayers.com/how-to-use-scoresheets-and-score-matches/how-to-score-8-ball/" target="_blank" rel="noopener" style="color:var(--gold);">How To Score 8-Ball</a><br/>
+        9-Ball scorekeeping: <a href="https://rules.poolplayers.com/how-to-use-scoresheets-and-score-matches/how-to-score-9-ball/" target="_blank" rel="noopener" style="color:var(--gold);">How To Score 9-Ball</a><br/>
+        Defensive shots: <a href="https://rules.poolplayers.com/general-rules/defensive-shots/" target="_blank" rel="noopener" style="color:var(--gold);">Defensive Shots</a>
+      </p>
+    </div>
+  </section>
+
+  <footer>
+    <p>🎱 Les Schtroumpfs – CPA League Champions 2026 | Las Vegas, Aug 9–16</p>
+    <p><small>Scorekeeping notes are based on official APA manual/rules pages. If APA updates wording, official rules control.</small></p>
+  </footer>
+
+  <script>
+    if ("serviceWorker" in navigator) {
+      window.addEventListener("load", () => {
+        navigator.serviceWorker.register('./sw.js', { updateViaCache: 'none' })
+      });
+    }
+  </script>
+</body>
+</html>

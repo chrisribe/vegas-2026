@@ -328,7 +328,12 @@ section h2 {
   width: 100%;
 }
 
-.highlight-item p { color: var(--text-muted); font-size: 0.88rem; }
+.highlight-item p {
+  color: var(--text-muted);
+  font-size: 0.88rem;
+  line-height: 1.55;
+  margin-bottom: 8px;
+}
 
 /* Keep emphasis inside paragraph copy inline (prevents stray punctuation lines). */
 .highlight-item p strong {
@@ -337,6 +342,15 @@ section h2 {
   font-size: inherit;
   font-weight: 700;
   color: var(--gold);
+}
+
+/* Give link bullets a bit more breathing room in sightseeing cards. */
+.highlight-item ul {
+  margin-top: 8px !important;
+}
+
+.highlight-item li {
+  margin-bottom: 3px;
 }
 
 .hi-content {

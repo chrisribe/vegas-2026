@@ -16,12 +16,37 @@
     @media (max-width: 640px) { #map { height: 380px; } }
 
     .legend {
-      display: flex; flex-wrap: wrap; gap: 12px;
+      display: flex; flex-wrap: wrap; gap: 8px;
       margin: 16px 0 32px;
     }
     .legend-item {
-      display: flex; align-items: center; gap: 6px;
+      display: inline-flex; align-items: center; gap: 6px;
       font-size: 0.85rem; color: var(--text-muted);
+      border: 1px solid rgba(255,255,255,0.16);
+      border-radius: 999px;
+      padding: 6px 10px;
+      background: rgba(255,255,255,0.03);
+      cursor: pointer;
+      transition: all .15s ease;
+    }
+    .legend-item:hover {
+      border-color: var(--gold);
+      color: var(--text);
+    }
+    .legend-item.active {
+      border-color: var(--gold);
+      background: rgba(240,192,64,0.16);
+      color: #fff;
+    }
+    .legend-reset {
+      display: inline-flex; align-items: center;
+      font-size: 0.85rem;
+      color: #4fc3f7;
+      border: 1px dashed rgba(79,195,247,0.5);
+      border-radius: 999px;
+      padding: 6px 10px;
+      background: rgba(79,195,247,0.08);
+      cursor: pointer;
     }
     .legend-dot {
       width: 14px; height: 14px; border-radius: 50%; flex-shrink: 0;
@@ -56,7 +81,7 @@
       </div>
     </div>
         <div class="nav-scroll-wrap"><nav id="main-nav"></nav></div>
-    <script src="nav.js?v=vegas2026-v17"></script>
+    <script src="nav.js?v=vegas2026-v19"></script>
   </header>
 
   <section>
@@ -70,13 +95,14 @@
     </div>
 
     <!-- LEGEND -->
-    <div class="legend">
-      <div class="legend-item"><div class="legend-dot" style="background:#f0c040;"></div> Our Hotels</div>
-      <div class="legend-item"><div class="legend-dot" style="background:#28a745;"></div> Cheap Eats (under $10)</div>
-      <div class="legend-item"><div class="legend-dot" style="background:#e94560;"></div> Buffets</div>
-      <div class="legend-item"><div class="legend-dot" style="background:#4fc3f7;"></div> Casinos / Attractions</div>
-      <div class="legend-item"><div class="legend-dot" style="background:#9c27b0;"></div> Off-Strip Picks</div>
-      <div class="legend-item"><div class="legend-dot" style="background:#ff9800;"></div> Essentials (CVS etc.)</div>
+    <div class="legend" id="legend-filters">
+      <button type="button" class="legend-item active" data-category="hotels"><div class="legend-dot" style="background:#f0c040;"></div> Our Hotels</button>
+      <button type="button" class="legend-item" data-category="eats"><div class="legend-dot" style="background:#28a745;"></div> Cheap Eats (under $10)</button>
+      <button type="button" class="legend-item" data-category="buffets"><div class="legend-dot" style="background:#e94560;"></div> Buffets</button>
+      <button type="button" class="legend-item" data-category="attractions"><div class="legend-dot" style="background:#4fc3f7;"></div> Casinos / Attractions</button>
+      <button type="button" class="legend-item" data-category="offstrip"><div class="legend-dot" style="background:#9c27b0;"></div> Off-Strip Picks</button>
+      <button type="button" class="legend-item" data-category="essentials"><div class="legend-dot" style="background:#ff9800;"></div> Essentials (CVS etc.)</button>
+      <button type="button" class="legend-reset" data-category="all">Show all</button>
     </div>
 
     <div id="map"></div>
@@ -156,14 +182,45 @@
       });
     }
 
-    // ── Helper ──
+    // ── Helpers ──
+    const allMarkers = [];
+    let currentCategory = 'unknown';
+
     function mark(lat, lng, icon, html) {
-      L.marker([lat, lng], { icon }).addTo(map).bindPopup(html);
+      const marker = L.marker([lat, lng], { icon }).addTo(map).bindPopup(html);
+      allMarkers.push({ marker, category: currentCategory });
+      return marker;
+    }
+
+    function gSearch(query, label) {
+      const q = encodeURIComponent(query);
+      const text = label || '🔎 Google';
+      return `<a href="https://www.google.com/search?q=${q}" target="_blank" rel="noopener" style="color:#4fc3f7; text-decoration:underline dotted; text-underline-offset:3px;">${text}</a>`;
+    }
+
+    function setLegendActive(category) {
+      document.querySelectorAll('#legend-filters .legend-item').forEach(btn => {
+        btn.classList.toggle('active', btn.dataset.category === category);
+      });
+    }
+
+    function filterMarkers(category) {
+      allMarkers.forEach(({ marker, category: markerCategory }) => {
+        if (category === 'all' || markerCategory === category) {
+          if (!map.hasLayer(marker)) marker.addTo(map);
+        } else {
+          if (map.hasLayer(marker)) map.removeLayer(marker);
+        }
+      });
+      if (category !== 'all') setLegendActive(category);
+      else document.querySelectorAll('#legend-filters .legend-item').forEach(btn => btn.classList.remove('active'));
+      map.closePopup();
     }
 
     // ══════════════════════════════
     // 🏨  OUR HOTELS  (gold star)
     // ══════════════════════════════
+    currentCategory = 'hotels';
     mark(36.1462, -115.1558, starPin(), `
       <b>⭐ SAHARA Las Vegas</b><br/>
       Your home base! North Strip<br/>
@@ -182,6 +239,7 @@
     // ══════════════════════════════
     // 🍔  CHEAP EATS  (green)
     // ══════════════════════════════
+    currentCategory = 'eats';
 
     // Miracle Mile / Planet Hollywood
     mark(36.1126, -115.1718, pin('#28a745'), `
@@ -258,6 +316,7 @@
     // ══════════════════════════════
     // 🦞  BUFFETS  (red)
     // ══════════════════════════════
+    currentCategory = 'buffets';
     mark(36.1412, -115.1643, pin('#e94560'), `
       <b>🦞 Wynn Buffet ⭐ #1</b><br/>
       Wynn Hotel — walking from SAHARA!<br/>
@@ -290,6 +349,7 @@
     // ══════════════════════════════
     // 🎰  CASINOS / ATTRACTIONS  (blue)
     // ══════════════════════════════
+    currentCategory = 'attractions';
     mark(36.1125, -115.1767, pin('#4fc3f7'), `
       <b>🎰 Bellagio</b><br/>
       Center Strip<br/>
@@ -307,78 +367,150 @@
       <b>🎵 Fremont Street Experience</b><br/>
       Downtown Las Vegas<br/>
       3 FREE concert stages every night!<br/>
-      No cover, no tickets — just show up 🎶
+      No cover, no tickets — just show up 🎶<br/>
+      ${gSearch('Fremont Street Experience Las Vegas', '🔎 Preview spot')}
     `);
 
     // ══════════════════════════════
     // 🏙️  OFF-STRIP PICKS  (purple)
     // ══════════════════════════════
+    currentCategory = 'offstrip';
     mark(36.1576, -115.1511, pin('#9c27b0'), `
       <b>🎨 Arts District (18b)</b><br/>
       Murals, galleries, vintage shops<br/>
-      Team picks nearby: Good Pie, Esther's Kitchen, Letty's
+      Uber from hotels: SAHARA 10–15 min · Westgate 10–15 min<br/>
+      Team picks nearby: Good Pie, Esther's Kitchen, Letty's<br/>
+      ${gSearch('Las Vegas Arts District 18b', '🔎 Preview district')}
     `);
     mark(36.1264, -115.1890, pin('#9c27b0'), `
       <b>🍜 Chinatown (Spring Mountain)</b><br/>
       Vegas locals' food zone — 248+ restaurants<br/>
-      Team picks: China Mama, Monta Ramen, Gen KBBQ, Lotus of Siam
+      Uber from hotels: SAHARA 10–15 min · Westgate 8–14 min<br/>
+      Team picks: China Mama, Monta Ramen, Gen KBBQ, Lotus of Siam<br/>
+      ${gSearch('Las Vegas Chinatown Spring Mountain', '🔎 Preview district')}
     `);
     mark(36.1661, -115.1390, pin('#9c27b0'), `
       <b>🍺 Fremont East District</b><br/>
       Local bars + food east of Fremont Experience<br/>
-      Team picks: Evel Pie, Le Thai, Atomic Liquors
+      Uber from hotels: SAHARA 8–15 min · Westgate 10–18 min<br/>
+      Team picks: Evel Pie, Le Thai, Atomic Liquors<br/>
+      ${gSearch('Fremont East Entertainment District Las Vegas', '🔎 Preview district')}
     `);
 
     // Individual off-strip restaurant pins
     mark(36.1577, -115.1536, pin('#9c27b0'), `
       <b>🍕 Good Pie</b><br/>
       Arts District — 1212 S Main St<br/>
-      Detroit/Sicilian/NY slices
+      Detroit/Sicilian/NY slices<br/>
+      ${gSearch('Good Pie Las Vegas', '🔎 Preview spot')}
     `);
     mark(36.1571, -115.1535, pin('#9c27b0'), `
       <b>🍝 Esther's Kitchen</b><br/>
       Arts District — 1131 S Main St<br/>
-      Housemade pasta · popular dinner spot
+      Housemade pasta · popular dinner spot<br/>
+      ${gSearch('Esther\'s Kitchen Las Vegas', '🔎 Preview spot')}
     `);
     mark(36.1620, -115.1537, pin('#9c27b0'), `
       <b>🌮 Letty's Cocina</b><br/>
       Arts District — 807 S Main St<br/>
-      Quesatacos + modern Mexican
+      Quesatacos + modern Mexican<br/>
+      ${gSearch('Letty\'s de Leticia\'s Cocina Las Vegas', '🔎 Preview spot')}
     `);
     mark(36.1258, -115.2242, pin('#9c27b0'), `
       <b>🍜 China Mama</b><br/>
       Chinatown area — 3420 S Jones Blvd<br/>
-      Handmade noodles + dumplings
+      Handmade noodles + dumplings<br/>
+      ${gSearch('China Mama Las Vegas', '🔎 Preview spot')}
     `);
     mark(36.1262, -115.2099, pin('#9c27b0'), `
       <b>🍜 Monta Ramen</b><br/>
       Chinatown — 5030 Spring Mountain Rd<br/>
-      Tonkotsu ramen
+      Tonkotsu ramen<br/>
+      ${gSearch('Monta Ramen Las Vegas', '🔎 Preview spot')}
     `);
     mark(36.1088, -115.1534, pin('#9c27b0'), `
       <b>🥩 Gen Korean BBQ</b><br/>
       Near UNLV/Paradise — 4480 Paradise Rd<br/>
-      AYCE KBBQ (great lunch value)
+      AYCE KBBQ (great lunch value)<br/>
+      ${gSearch('GEN Korean BBQ House Las Vegas Paradise', '🔎 Preview spot')}
     `);
     mark(36.1148, -115.1448, pin('#9c27b0'), `
       <b>🍛 Lotus of Siam</b><br/>
       East Flamingo — 620 E Flamingo Rd<br/>
-      Famous Northern Thai spot
+      Famous Northern Thai spot<br/>
+      ${gSearch('Lotus of Siam Las Vegas', '🔎 Preview spot')}
     `);
     mark(36.1679, -115.1395, pin('#9c27b0'), `
       <b>🍜 Le Thai</b><br/>
       Fremont East<br/>
-      Short rib fried rice + late-night option
+      Short rib fried rice + late-night option<br/>
+      ${gSearch('Le Thai Las Vegas Fremont East', '🔎 Preview spot')}
     `);
     mark(36.1674, -115.1361, pin('#9c27b0'), `
       <b>🍺 Atomic Liquors</b><br/>
       Fremont East — est. 1952<br/>
-      Oldest freestanding Vegas bar
+      Oldest freestanding Vegas bar<br/>
+      ${gSearch('Atomic Liquors Las Vegas', '🔎 Preview spot')}
+    `);
+    mark(36.1692, -115.1406, pin('#9c27b0'), `
+      <b>📦 Downtown Container Park</b><br/>
+      Shopping, eats, and live music in container complex<br/>
+      Uber from hotels: SAHARA 8–12 min · Westgate 10–15 min<br/>
+      Great low-stress team stop<br/>
+      ${gSearch('Downtown Container Park Las Vegas', '🔎 Preview spot')}
+    `);
+    mark(36.1713, -115.1454, pin('#9c27b0'), `
+      <b>🕹️ Pinball Hall of Fame</b><br/>
+      4925 Las Vegas Blvd S (south Strip edge)<br/>
+      Uber from hotels: SAHARA 12–18 min · Westgate 10–16 min<br/>
+      Retro arcade museum · easy low-stress hang<br/>
+      ${gSearch('Pinball Hall of Fame Las Vegas', '🔎 Preview spot')}
+    `);
+
+    mark(36.1533, -115.3345, pin('#9c27b0'), `
+      <b>🏜️ Red Rock Canyon Scenic Drive</b><br/>
+      Uber from hotels: SAHARA 25–35 min · Westgate 20–30 min<br/>
+      Best with a car · sunset views<br/>
+      Scenic loop + viewpoints<br/>
+      ${gSearch('Red Rock Canyon Scenic Drive Las Vegas', '🔎 Preview spot')}
+    `);
+
+    mark(35.8397, -115.2708, pin('#9c27b0'), `
+      <b>🎨 Seven Magic Mountains</b><br/>
+      Uber from hotels: SAHARA 35–50 min · Westgate 30–45 min<br/>
+      Free outdoor art stop south of Vegas<br/>
+      Quick photo mission if someone drives<br/>
+      ${gSearch('Seven Magic Mountains Las Vegas', '🔎 Preview spot')}
+    `);
+
+    mark(36.0992, -115.1756, pin('#9c27b0'), `
+      <b>🎮 The Orleans</b><br/>
+      Uber from hotels: SAHARA 12–18 min · Westgate 8–15 min<br/>
+      Cheap off-Strip casino hang option<br/>
+      Bowling + movie + food court<br/>
+      ${gSearch('The Orleans Hotel and Casino Las Vegas', '🔎 Preview spot')}
+    `);
+
+    mark(36.1148, -115.2029, pin('#9c27b0'), `
+      <b>🎳 Gold Coast</b><br/>
+      Uber from hotels: SAHARA 10–16 min · Westgate 8–14 min<br/>
+      Cheap off-Strip casino hang option<br/>
+      Bowling + arcade + casual eats<br/>
+      ${gSearch('Gold Coast Hotel and Casino Las Vegas', '🔎 Preview spot')}
+    `);
+
+    mark(36.1428, -115.1919, pin('#9c27b0'), `
+      <b>🍔 Palace Station</b><br/>
+      Uber from hotels: SAHARA 8–12 min · Westgate 8–12 min<br/>
+      Cheap off-Strip casino hang option<br/>
+      Casual food + easy rideshare from SAHARA<br/>
+      ${gSearch('Palace Station Hotel and Casino Las Vegas', '🔎 Preview spot')}
     `);
 
     // ══════════════════════════════
     // 🛒  ESSENTIALS  (orange)
     // ══════════════════════════════
+    currentCategory = 'essentials';
     mark(36.1140, -115.1724, pin('#ff9800'), `
       <b>🛒 Walgreens (Center Strip)</b><br/>
       Near Bally's / Paris area<br/>
@@ -391,6 +523,13 @@
       Closest essentials store to your hotel<br/>
       Load up the mini fridge here!
     `);
+
+    document.querySelectorAll('#legend-filters [data-category]').forEach(btn => {
+      btn.addEventListener('click', () => filterMarkers(btn.dataset.category));
+    });
+
+    // Default view: show all markers on load
+    filterMarkers('all');
   </script>
 
   <script>

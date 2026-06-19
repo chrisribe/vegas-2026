@@ -319,23 +319,29 @@ section h2 {
   padding-top: 2px;
 }
 
-.highlight-item strong {
+.hi-content > strong {
   color: var(--gold);
   display: block;
   margin-bottom: 4px;
   font-size: 0.95rem;
   font-weight: 700;
+  width: 100%;
 }
 
 .highlight-item p { color: var(--text-muted); font-size: 0.88rem; }
 
+/* Keep emphasis inside paragraph copy inline (prevents stray punctuation lines). */
+.highlight-item p strong {
+  display: inline;
+  margin: 0;
+  font-size: inherit;
+  font-weight: 700;
+  color: var(--gold);
+}
+
 .hi-content {
   flex: 1;
   min-width: 0;
-}
-
-.hi-content strong {
-  width: 100%;
 }
 
 /* ===== TABLES ===== */

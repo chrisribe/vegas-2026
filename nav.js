@@ -62,7 +62,7 @@
 
     function centerActive() {
       if (!activeLink) return;
-      activeLink.scrollIntoView({ inline: 'center', block: 'nearest', behavior: 'instant' });
+      activeLink.scrollIntoView({ inline: 'center', block: 'nearest', behavior: 'auto' });
       updateFade();
     }
 

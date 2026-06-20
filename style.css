@@ -140,9 +140,16 @@ nav a {
   flex-shrink: 0;
 }
 
-nav a:hover, nav a.active {
+nav a.active {
   background: var(--gold);
   color: var(--darker);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  nav a:hover {
+    background: var(--gold);
+    color: var(--darker);
+  }
 }
 
 /* ===== HERO ===== */

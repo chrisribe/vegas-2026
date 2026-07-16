@@ -8,6 +8,7 @@
     { href: 'tournament.html',  label: '🎱 Tournament' },
     { href: 'scorekeeping.html', label: '📝 Scorekeeping' },
     { href: 'transport.html',   label: '🚇 Transport' },
+    { href: 'sightseeing.html', label: '🏜️ Day Trips' },
     { href: 'tips.html',       label: '💡 Tips' },
     { href: 'map.html',        label: '🗺️ Map' },
   ];

@@ -1,4 +1,4 @@
-const CACHE = 'vegas2026-v25';
+const CACHE = 'vegas2026-v26';
 const ASSETS = [
   './',
   './index.html',
@@ -8,6 +8,7 @@ const ASSETS = [
   './map.html',
   './off-strip.html',
   './transport.html',
+  './sightseeing.html',
   './tournament.html',
   './scorekeeping.html',
   './nav.js',

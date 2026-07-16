@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <link rel="manifest" href="manifest.json" />
+  <meta name="theme-color" content="#f0c040" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <link rel="apple-touch-icon" href="icons/icon-192.png" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>🏜️ Day Trips – Vegas 2026</title>
+  <link rel="stylesheet" href="style.css?v=vegas2026-v10" />
+  <style>
+    .trips-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 14px;
+      margin-bottom: 40px;
+    }
+    @media (max-width: 640px) {
+      .trips-grid { grid-template-columns: 1fr; }
+    }
+    .trip-card {
+      background: var(--card-bg);
+      border-radius: 10px;
+      padding: 16px 18px;
+      border-left: 4px solid var(--gold);
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+    .trip-card h4 {
+      margin: 0 0 4px;
+      color: var(--gold);
+      font-size: 1rem;
+    }
+    .trip-card .meta {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      margin-bottom: 4px;
+    }
+    .trip-card ul {
+      margin: 4px 0 0;
+      padding-left: 18px;
+      font-size: 0.88rem;
+      color: #ccc;
+      line-height: 1.55;
+    }
+    .trip-card .warn {
+      background: rgba(240,80,40,0.13);
+      border-radius: 6px;
+      padding: 6px 10px;
+      font-size: 0.83rem;
+      color: #f08060;
+      margin-top: 4px;
+    }
+    .section-zone {
+      display: inline-block;
+      background: var(--gold);
+      color: #111;
+      font-weight: 700;
+      font-size: 0.75rem;
+      border-radius: 4px;
+      padding: 2px 8px;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      margin-bottom: 12px;
+    }
+    .practical-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 12px;
+      margin-bottom: 30px;
+    }
+    @media (max-width: 640px) {
+      .practical-grid { grid-template-columns: 1fr; }
+    }
+    .practical-item {
+      background: var(--card-bg);
+      border-radius: 8px;
+      padding: 12px 15px;
+      font-size: 0.88rem;
+      color: #ccc;
+      border-left: 3px solid #555;
+    }
+    .practical-item strong { color: #fff; }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="header-inner">
+      <div class="header-title">
+        <span class="emoji-big">🎱</span>
+        <div>
+          <h1>Les Schtroumpfs à Vegas!</h1>
+          <p class="subtitle">CPA League Champions — Las Vegas · Aug 9–16, 2026</p>
+        </div>
+      </div>
+      <div class="translate-bar">
+        <a href="https://translate.google.com/translate?hl=fr&sl=en&tl=fr&u=https%3A%2F%2Fchrisribe.github.io%2Fvegas-2026%2Fsightseeing.html"
+           target="_blank" class="translate-btn">🌐 Traduire en Français</a>
+      </div>
+    </div>
+    <div class="nav-scroll-wrap"><nav id="main-nav"></nav></div>
+    <script src="nav.js?v=vegas2026-v10"></script>
+  </header>
+
+  <section>
+    <span class="section-label">Escape the Strip</span>
+    <h2>🏜️ Day Trips &amp; Sightseeing</h2>
+    <p style="color:var(--text-muted); margin-bottom:40px;">Incredible landscapes just outside Las Vegas — organized by drive time from the Strip. Need a car for most of these. SAHARA has free parking!</p>
+
+    <!-- CLOSE -->
+    <span class="section-zone">🟢 Close — Under 1 Hour (Half Day)</span>
+    <div class="trips-grid">
+
+      <div class="trip-card">
+        <h4>🔴 Red Rock Canyon</h4>
+        <div class="meta">~30 min drive · $15/car · Half day</div>
+        <ul>
+          <li>13-mile scenic drive loop through massive red sandstone formations</li>
+          <li>Calico Hills trail — easy walk, stunning views, great photos</li>
+          <li>Closest major nature escape from SAHARA — easiest half-day trip</li>
+          <li>No public transit — must drive or rent a car</li>
+        </ul>
+        <div class="warn">⚠️ August heat is brutal (100°F+) — go early morning only, be back by 11am</div>
+      </div>
+
+      <div class="trip-card">
+        <h4>🔥 Valley of Fire State Park</h4>
+        <div class="meta">~55 min drive · ~$15/car · Half day</div>
+        <ul>
+          <li>Nevada's oldest state park — bright red Aztec sandstone formations</li>
+          <li>Best spots: Fire Wave, Elephant Rock, Arch Rock, White Domes Trail</li>
+          <li>Goes vivid orange-red at sunrise &amp; sunset — bring a camera</li>
+          <li>Can combine with Hoover Dam (both are east of Vegas)</li>
+        </ul>
+        <div class="warn">⚠️ Go early morning or late afternoon ONLY in August. No Uber — need a car.</div>
+      </div>
+
+      <div class="trip-card">
+        <h4>🏛️ Hoover Dam</h4>
+        <div class="meta">~45 min drive · $10–$30 · Half day</div>
+        <ul>
+          <li>Art Deco masterpiece on the Nevada/Arizona border</li>
+          <li>Self-guided tour $10 (exterior + visitor center)</li>
+          <li>Powerplant Tour $30 — go inside the dam! Worth it.</li>
+          <li>Lake Mead visible from dam — beautiful views</li>
+          <li>Combine with Valley of Fire on same day (both east of Vegas)</li>
+        </ul>
+        <div class="warn">⚠️ Driving only — no public transit</div>
+      </div>
+
+      <div class="trip-card">
+        <h4>🎨 Area 15 / Meow Wolf</h4>
+        <div class="meta">~15 min from SAHARA · ~$48/person · Half day</div>
+        <ul>
+          <li>Surreal immersive art experience — not a museum, not a theme park</li>
+          <li>Omega Mart installation — interactive, weird, unforgettable</li>
+          <li>Great option if it rains or too hot to be outside</li>
+          <li>Book tickets online in advance — can sell out</li>
+        </ul>
+      </div>
+
+    </div>
+
+    <!-- MEDIUM -->
+    <span class="section-zone">🟡 Medium — 2–3 Hours (Full Day)</span>
+    <div class="trips-grid">
+
+      <div class="trip-card">
+        <h4>🏔️ Zion National Park</h4>
+        <div class="meta">~2.5 hours drive · $35/car · Full day</div>
+        <ul>
+          <li>One of the most stunning national parks in the US — towering red canyon walls</li>
+          <li>Summer shuttle mandatory inside (no private cars on main road)</li>
+          <li>Riverside Walk — easy, 2mi, flat, beautiful river canyon</li>
+          <li>The Narrows — wade through the river into the slot canyon (iconic!)</li>
+          <li>Angels Landing — challenging, chains required, <strong>permit needed at recreation.gov</strong></li>
+          <li>Bring food — restaurants inside are limited and pricey</li>
+        </ul>
+        <div class="warn">⚠️ Full day minimum — leave Vegas by 6–7am. Water shoes needed for The Narrows.</div>
+      </div>
+
+    </div>
+
+    <!-- FAR -->
+    <span class="section-zone">🔴 Far — 4–5 Hours (Overnight or Very Early Start)</span>
+    <div class="trips-grid">
+
+      <div class="trip-card">
+        <h4>🏜️ Grand Canyon — South Rim</h4>
+        <div class="meta">~4.5 hours drive · $35/car · Very long day</div>
+        <ul>
+          <li>The most iconic view in North America — multiple viewpoints along Rim Trail</li>
+          <li>Bright Angel Trail: hike down into the canyon</li>
+          <li>Do NOT attempt to hike to the river and back in one day in August — extremely dangerous</li>
+          <li>Leave Vegas by 5am, arrive for sunrise, back by evening</li>
+          <li><strong>Alternative:</strong> Grand Canyon West Rim / Skywalk (~2.5h) — closer, $50+ for Skywalk</li>
+        </ul>
+        <div class="warn">⚠️ August = peak heat AND monsoon season. Afternoon thunderstorms possible. Start early!</div>
+      </div>
+
+      <div class="trip-card">
+        <h4>📸 Horseshoe Bend + Antelope Canyon</h4>
+        <div class="meta">~4.5 hours drive · Best combined · Very long day</div>
+        <ul>
+          <li><strong>Horseshoe Bend:</strong> FREE entry. 15-min walk to overlook. 270° bend of Colorado River — one of the most photographed spots in the US</li>
+          <li><strong>Antelope Canyon:</strong> Must book tour in advance. Upper (~$75–$150+) or Lower (~$60–$85). Incredible light beams through slot canyon walls</li>
+          <li>Both are near Page, AZ — do them together on the same day</li>
+        </ul>
+        <div class="warn">⚠️ Very long drive — leave by 4–5am. Antelope Canyon tours sell out! Book online well in advance.</div>
+      </div>
+
+    </div>
+
+    <!-- AIR TOURS -->
+    <span class="section-zone">🚁 No Driving Required</span>
+    <div class="trips-grid">
+
+      <div class="trip-card">
+        <h4>🚁 Grand Canyon Helicopter Tours</h4>
+        <div class="meta">~$200–$500/person · 4–6 hours total</div>
+        <ul>
+          <li>Fly over the canyon from Las Vegas — no 4.5 hour drive</li>
+          <li>Papillon and Maverick are the main operators</li>
+          <li>Includes transfer from Strip hotel</li>
+          <li>Completely different experience — views you can't get on foot</li>
+          <li>Expensive but worth it if budget allows</li>
+        </ul>
+      </div>
+
+    </div>
+
+    <!-- PRACTICAL NOTES -->
+    <h3 style="color:var(--gold); margin-bottom:16px; font-size:1.2rem;">🧳 Practical Notes for All Trips</h3>
+    <div class="practical-grid">
+      <div class="practical-item"><strong>🚗 Car Rental:</strong> $40–$70/day from airport rental center. Free 24/7 shuttle from terminal to rental center.</div>
+      <div class="practical-item"><strong>🅿️ Free Parking Base:</strong> SAHARA has free parking — perfect base for early-morning day trip departures.</div>
+      <div class="practical-item"><strong>⏰ Leave Early:</strong> All canyon trips — leave Vegas before 6am to beat heat and have full time at destination.</div>
+      <div class="practical-item"><strong>💧 Water is Non-Negotiable:</strong> Bring way more than you think — minimum 2L per person per trail. August heat kills.</div>
+      <div class="practical-item"><strong>📱 Download Offline Maps:</strong> Cell service is spotty or nonexistent near most canyons. Download Google Maps area offline before leaving.</div>
+      <div class="practical-item"><strong>🌡️ August Temps:</strong> Vegas 105°F · Grand Canyon rim 85°F · Canyon floor 110°F+ · Zion canyon 95°F+</div>
+      <div class="practical-item"><strong>🎒 Pack List:</strong> Sunscreen, hat, snacks, portable charger, water shoes (for Narrows), layered clothing for elevation.</div>
+      <div class="practical-item"><strong>🏕️ Permits:</strong> Angels Landing at Zion requires advance permit at recreation.gov. Book early — fills up!</div>
+    </div>
+
+  </section>
+
+  <footer>
+    <p>🎱 Les Schtroumpfs – CPA League Champions 2026 | Las Vegas, Aug 9–16</p>
+    <p><small>Info sourced from YouTube research playlist. Prices may vary — always verify on-site.</small></p>
+  </footer>
+  <script>
+    if ("serviceWorker" in navigator) {
+      window.addEventListener("load", () => {
+        navigator.serviceWorker.register('./sw.js', { updateViaCache: 'none' })
+      });
+    }
+  </script>
+</body>
+</html>
